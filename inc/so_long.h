@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2023/11/21 19:05:17 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:59:20 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 # include <stdio.h>
 # include <unistd.h>
 
-typedef struct s_map
+# define BUFF_SIZE 10000
+# define NULL 0
+
+typedef struct t_map
 {
 	char		**matrix;
 	int			width;
