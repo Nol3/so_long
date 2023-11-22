@@ -6,7 +6,6 @@ LIBS = -ldl -lglfw3 -pthread -lm $(MLX42)/libmlx42.a
 
 SRCS	=	./src/main.c \
 
-
 OBJS	= ${SRCS:.c=.o}
 
 all: $(NAME)
