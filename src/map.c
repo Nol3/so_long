@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2023/11/22 20:05:15 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/11/28 21:30:57 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	check_map(t_map map)
 		j = 0;
 		while (j < map.width)
 		{
-			if (map.matrix[i][j] != '1' && map.matrix[i][j] != '0'
-				&& map.matrix[i][j] != 'C' && map.matrix[i][j] != 'E'
-				&& map.matrix[i][j] != 'P')
+			if (map.full_map[i][j] != '1' && map.full_map[i][j] != '0'
+				&& map.full_map[i][j] != 'C' && map.full_map[i][j] != 'E'
+				&& map.full_map[i][j] != 'P')
 			{
 				printf("Error\nInvalid map\n");
 				return (0);
@@ -50,30 +50,41 @@ int	check_map(t_map map)
 	return (1);
 }
 
-char	**ft_read_map(char *map)
+void	ft_check_if_reachable(char **reachmap, int y, int x, t_map map)
 {
-	int		fd;
-	int		ret;
-	char	*buffer;
-	char	**matrix;
+	if (y < 0 || y >= map.height || x < 0 || x >= map.width)
+	{
+		return ;
+	}
+	if (reachmap[y][x] == '1' || reachmap[y][x] == '2')
+	{
+		return ;
+	}
+	reachmap[y][x] = '2';
+	ft_check_if_reachable(reachmap, y - 1, x, map);
+	ft_check_if_reachable(reachmap, y + 1, x, map);
+	ft_check_if_reachable(reachmap, y, x - 1, map);
+	ft_check_if_reachable(reachmap, y, x + 1, map);
+}
+void	ft_check_min_items(char *map)
+{
+	int	i;
+	int	coll;
+	int	exit;
 
-	fd = open(map, O_RDONLY);
-	if (fd == -1)
+	i = 0;
+	coll = 0;
+	exit = 0;
+	while (map[i])
 	{
-		printf("Error\nInvalid file\n");
-		return (NULL);
+		if (map[i] == 'C')
+			coll++;
+		if (map[i] == 'E')
+			exit++;
+		i++;
 	}
-	buffer = malloc(sizeof(char) * (BUFF_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	ret = read(fd, buffer, BUFF_SIZE);
-	if (ret == -1)
+	if (coll < 1 || exit < 1)
 	{
-		printf("Error\nInvalid file\n");
-		return (NULL);
+		ft_error("Error\nInvalid map\n");
 	}
-	buffer[ret] = '\0';
-	matrix = ft_split(buffer, '\n');
-	free(buffer);
-	return (matrix);
 }
