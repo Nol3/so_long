@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2023/11/28 21:31:10 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/01 14:01:41 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,20 @@
 # define BUFF_SIZE 10000
 # define WIDTH 50
 # define HEIGHT 50
-// typedef struct t_map
-// {
-// 	char		**matrix;
-// 	int			width;
-// 	int			height;
-// }				t_map;
-
-// typedef struct s_data
-// {
-// 	mlx_t		*mlx;
-// 	mlx_image_t	*character;
-// 	mlx_image_t	*collect;
-// 	mlx_image_t	*floor;
-// 	mlx_image_t	*wall;
-// 	mlx_image_t	**colls;
-// 	mlx_image_t	*exit;
-// 	t_map		map;
-// 	int			player_pos_x;
-// 	int			player_pos_y;
-// 	int			coll_count;
-// 	int			max_colls;
-// 	int			steps;
-// }				t_data;
 
 typedef struct s_element
 {
+	mlx_t		*mlx;
 	mlx_image_t	*wall;
 	mlx_image_t	*floor;
 	mlx_image_t	*collect;
-	mlx_image_t	*character;
+	mlx_image_t	*player;
 	mlx_image_t	*exit;
+	t_map		*map;
+	t_game		*game;
+	int			player_pos_x;
+	int			player_pos_y;
+	int			steps;
 }	t_element;
 
 typedef struct s_map
@@ -61,18 +44,15 @@ typedef struct s_map
 	int		width;
 	int		height;
 	char	**full_map;
-	int		pos[2];
 }	t_map;
 
 typedef struct s_game
 {
 	t_element	*elements;
-	t_map		*map;
 }	t_game;
 
-void ft_error(void);
-int	check_extension(const char *file_name);
-int	check_map(t_map map);
+//outs.c
+char	**ft_free(char **map);
 
 //prefab.c
 void	ft_get_wall_img(t_element *mlx);
@@ -81,10 +61,19 @@ void	ft_get_chest_img(t_element *mlx);
 void	ft_get_player_img(t_element *mlx);
 void	ft_get_exit_img(t_element *mlx);
 
-//map.c
+//map_check.c
 int		ft_check_extension(const char *file_name);
 int		ft_check_map(t_map map);
-void	ft_check_if_reachable(char **reachmap, int y, int x, t_map map);
 void	ft_check_min_items(char *map);
 
+//solve.c
+void	ft_check_if_reachable(char **reachmap, int y, int x, t_map map);
+
+//map_load.c
+char	ft_read_map(char *str);
+char **ft_create_map(char *map_load, int height, int width);
+t_element	ft_get_height_width(t_element elements, char *map_load);
+
+//init.c
+t_element	ft_init_elements(t_element elements);
 #endif

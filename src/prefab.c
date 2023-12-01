@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:57:21 by alcarden          #+#    #+#             */
-/*   Updated: 2023/11/28 21:01:18 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:02:45 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void ft_get_chest_img(t_element *mlx)
 
 void ft_get_player_img(t_element *mlx)
 {
-	mlx_image_t	*character;
+	mlx_image_t	*player;
 
-	character = malloc(sizeof(mlx_image_t) * 1);
-	character = mlx_load_png("./textures/valere.png");
-	((t_game *)mlx)->elements->character = mlx_texture_to_image(mlx, character);
-	mlx_resize_image(((t_game *)mlx)->elements->character, 50, 50);
-	mlx_delete_image(mlx, character);
+	player = malloc(sizeof(mlx_image_t) * 1);
+	player = mlx_load_png("./textures/valere.png");
+	((t_game *)mlx)->elements->player = mlx_texture_to_image(mlx, player);
+	mlx_resize_image(((t_game *)mlx)->elements->player, 50, 50);
+	mlx_delete_image(mlx, player);
 }
 
 void ft_get_exit_img(t_element *mlx)
