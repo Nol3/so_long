@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/01 14:01:41 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/06 05:58:13 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ typedef struct s_element
 	mlx_image_t	*collect;
 	mlx_image_t	*player;
 	mlx_image_t	*exit;
+	mlx_image_t	**columns;
 	t_map		*map;
 	t_game		*game;
 	int			player_pos_x;
 	int			player_pos_y;
+	int			max_columns;
 	int			steps;
 }	t_element;
 
