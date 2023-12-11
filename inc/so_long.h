@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/06 05:58:13 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:19:33 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,9 @@
 # include <memory.h>
 
 # define BUFF_SIZE 10000
-# define WIDTH 50
-# define HEIGHT 50
+# define WIDTH 256
+# define HEIGHT 256
 
-typedef struct s_element
-{
-	mlx_t		*mlx;
-	mlx_image_t	*wall;
-	mlx_image_t	*floor;
-	mlx_image_t	*collect;
-	mlx_image_t	*player;
-	mlx_image_t	*exit;
-	mlx_image_t	**columns;
-	t_map		*map;
-	t_game		*game;
-	int			player_pos_x;
-	int			player_pos_y;
-	int			max_columns;
-	int			steps;
-}	t_element;
 
 typedef struct s_map
 {
@@ -52,6 +36,24 @@ typedef struct s_game
 {
 	t_element	*elements;
 }	t_game;
+typedef struct s_element
+{
+	mlx_t		*mlx;
+	mlx_image_t	*player;
+	mlx_image_t	*floor;
+	mlx_image_t	*wall;
+	mlx_image_t	*exit;
+	mlx_image_t	*collect;
+	mlx_image_t	**columns;
+	t_map		*map;
+	t_game		*game;
+	int			player_pos_x;
+	int			player_pos_y;
+	int			max_columns;
+	int			steps;
+}	t_element;
+
+
 
 //outs.c
 char	**ft_free(char **map);
@@ -65,7 +67,7 @@ void	ft_get_exit_img(t_element *mlx);
 
 //map_check.c
 int		ft_check_extension(const char *file_name);
-int		ft_check_map(t_map map);
+int		ft_check_map(char *map);
 void	ft_check_min_items(char *map);
 
 //solve.c

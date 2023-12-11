@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/01 14:06:48 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:05:20 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,25 @@ char	ft_read_map(char *str)
 	int		fd;
 	char	*buff;
 	char	*map;
-	int		ret;
+	int		map_size;
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 		perror("Error\nInvalid file\n");
-	buff = malloc(sizeof(char) * (BUFF_SIZE + 1));
+	buff = malloc(sizeof(char) * 2);
 	if (!buff)
 		perror("Error\nMalloc error\n");
-	ret = read(fd, buff, BUFF_SIZE);
-	if (ret == -1)
-		perror("Error\nRead error\n");
-	buff[ret] = '\0';
-	map = ft_strdup(buff);
+	while ( read(fd, buff, 1) == 1)
+	{
+		map_size++;
+	}
 	free(buff);
+	fd = open(str, O_RDONLY);
+	map = malloc(sizeof(char) * (map_size + 1));
+	if (!map)
+		perror("Error\nMalloc error\n");
+	read(fd, map, map_size);
+	map[map_size] = '\0';
 	close(fd);
 	return (map);
 }
