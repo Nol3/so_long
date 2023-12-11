@@ -6,19 +6,20 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/11 17:05:20 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:58:56 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-char	ft_read_map(char *str)
+char	*ft_read_map(char *str)
 {
 	int		fd;
 	char	*buff;
 	char	*map;
 	int		map_size;
 
+	map_size = 0;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 		perror("Error\nInvalid file\n");
@@ -64,14 +65,13 @@ char **ft_create_map(char *map_load, int height, int width)
 		map[i][j] = '\0';
 		i++;
 	}
-	map[i] = '\0';
+	map[i] = NULL;
 	return (map);
 }
 
 t_element	ft_get_height_width(t_element elements, char *map_load)
 {
 	int	i;
-	int	j;
 	int	height;
 	int	width;
 
@@ -80,15 +80,10 @@ t_element	ft_get_height_width(t_element elements, char *map_load)
 	width = 0;
 	while (map_load[i])
 	{
-		j = 0;
-		while (map_load[i] != '\n')
-		{
-			i++;
-			j++;
-		}
-		if (j > width)
-			width = j;
-		height++;
+		if (map_load[i] == '\n')
+			height++;
+		if (height == 0)
+			width++;
 		i++;
 	}
 	elements.map->height = height;

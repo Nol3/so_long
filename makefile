@@ -5,8 +5,15 @@ LIBFT = include/bin/libft.a
 LIBS = -ldl -lglfw3 -pthread -lm $(MLX42)/libmlx42.a
 
 SRCS	=	./src/main.c \
-			./src/map.c \
-			./src/error.c
+			./src/create.c \
+			./src/init.c \
+			./src/map_check.c \
+			./src/map_load.c \
+			./src/outs.c \
+			./src/png_to_textures.c \
+			./src/solve.c \
+			./src/textures_to_window.c \
+			./src/valere_move.c \
 
 OBJS	= ${SRCS:.c=.o}
 
