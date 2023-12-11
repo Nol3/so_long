@@ -6,11 +6,14 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 05:41:43 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/11 20:49:56 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/11 21:04:15 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+//int	ft_create_window(t_element element, char *file_read);
+//arreglos para intentar hacer un make antes de irme.
 
 int	ft_create_window(t_element element)
 {
