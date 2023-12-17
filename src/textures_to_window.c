@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 06:02:30 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/11 20:08:30 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/17 13:50:40 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,21 @@ void	ft_collectible(int height, int width, t_element element)
 	}
 }
 
+void	ft_open_exit(t_element element)
+{
+	int		cnt;
+	t_element	*ptr;
 
+	cnt = 0;
+	ptr = &element;
+	if (element.columns_counter == element.max_columns)
+	{
+		element.exit->enabled = true;
+		if (element.map->full_map[element.player->instances[0].y
+				/ 64][element.player->instances[0].x / 64] == 'E')
+		{
+			ft_printf("¡You Won!\n");
+			ft_close_window(ptr);
+		}
+	}
+}

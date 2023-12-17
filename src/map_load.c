@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/11 20:58:56 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/17 13:50:22 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,14 @@ char	*ft_read_map(char *str)
 	int		map_size;
 
 	map_size = 0;
-	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		perror("Error\nInvalid file\n");
 	buff = malloc(sizeof(char) * 2);
-	if (!buff)
-		perror("Error\nMalloc error\n");
-	while ( read(fd, buff, 1) == 1)
-	{
-		map_size++;
-	}
-	free(buff);
 	fd = open(str, O_RDONLY);
-	map = malloc(sizeof(char) * (map_size + 1));
-	if (!map)
-		perror("Error\nMalloc error\n");
+	while (read(fd, buff, 1) == 1)
+		map_size++;
+	free(buff);
+	close(fd);
+	fd = open(str, O_RDONLY);
+	map = malloc(sizeof(char) * map_size + 1);
 	read(fd, map, map_size);
 	map[map_size] = '\0';
 	close(fd);
@@ -89,4 +82,56 @@ t_element	ft_get_height_width(t_element elements, char *map_load)
 	elements.map->height = height;
 	elements.map->width = width;
 	return (elements);
+}
+t_element	ft_gen_map(t_element element)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (element.map->full_map[i])
+	{
+		j = 0;
+		while (element.map->full_map[i][j])
+		{
+			if (element.map->full_map[i][j] == '1')
+				mlx_image_to_window(element.mlx, element.wall, j * 64, i * 64);
+			else if (element.map->full_map[i][j] == '0')
+				mlx_image_to_window(element.mlx, element.floor, j * 64, i * 64);
+			else if (element.map->full_map[i][j] == 'C')
+				mlx_image_to_window(element.mlx, element.collect, j * 64, i * 64);
+			else if (element.map->full_map[i][j] == 'E')
+				mlx_image_to_window(element.mlx, element.exit, j * 64, i * 64);
+			j++;
+		}
+		i++;
+	}
+	{
+		element = ft_gen_player(element);
+		return (element);
+	}
+}
+
+t_element	ft_gen_player(t_element element)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (element.map->full_map[i])
+	{
+		j = 0;
+		while (element.map->full_map[i][j])
+		{
+			if (element.map->full_map[i][j] == 'P')
+			{
+				element = ft_valere(i, j, element);
+				element.player_pos_x = j;
+				element.player_pos_y = i;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (element);
 }

@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:38:03 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/11 20:57:44 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:50:13 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	ft_check_extension(const char *file_name)
 	i = 0;
 	while (file_name[i])
 		i++;
-	if (file_name[i - 1] == 'b' && file_name[i - 2] == 'e'
-		&& file_name[i - 3] == 'r' && file_name[i - 4] == '.')
+	if (file_name[i - 1] == 'r' && file_name[i - 2] == 'e' && file_name[i - 3] == 'b' && file_name[i - 4] == '.')
 		return (1);
 	return (0);
 }
