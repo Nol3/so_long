@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:18:38 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/11 20:33:48 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:15:45 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ t_element	ft_init_elements(t_element elements)
 	elements.map->full_map = 0;
 	elements.player_pos_x = 0;
 	elements.player_pos_y = 0;
+	elements.columns_counter = 0;
 	elements.columns = 0;
+	elements.max_columns = 0;
 	elements.steps = 0;
 	return (elements);
 }

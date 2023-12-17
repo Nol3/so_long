@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:38:03 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/17 12:50:13 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/17 15:29:00 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int		ft_check_map(char *map)
 		i++;
 	}
 	if ((coll < 1 || exit < 1 || player != 1 ) && ft_check_min_items(map) == 0)
+	{
 		perror("Error\nInvalid map\n");
 		return (0);
-
+	}
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 05:41:43 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/17 13:58:56 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:33:37 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@ int	ft_create_window(t_element element, char *file_read)
 
 	ptr = &element;
 	tester = 0;
-	element = ft_get_height_width(element, file_read);
 	element = ft_init_window(element);
+	element = ft_get_height_width(element, file_read);
 	element = ft_gen_map(element);
-	tester = ft_check_if_reachable(element, element.player_pos_x, element.player_pos_y,
-			&tester);
-	if (tester == 0 || element.columns_counter != element.max_columns)
-	{
-		ft_printf("Error:\n El mapa no tiene solución\n");
-		ft_free(element.map->full_map);
-		exit(1);
-	}
+	tester = ft_check_if_reachable(element, element.player_pos_x, element.player_pos_y, &tester);
+	// if (tester != 1 || element.columns_counter != element.max_columns)
+	// {
+	// 	ft_printf("Error:\n El mapa no tiene solución\n");
+	// 	ft_free(element.map->full_map);
+	// 	exit(1);
+	// }
 	element.columns = 0;
 	element.map->full_map = ft_free(element.map->full_map);
 	element.map->full_map = ft_create_map(file_read, element.map->height, element.map->width);

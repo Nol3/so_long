@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/17 13:55:20 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:15:03 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <unistd.h>
 # include <memory.h>
 
-//# define BUFF_SIZE 10000
-// # define WIDTH 256
-// # define HEIGHT 256
+# define BUFF_SIZE 10000
+# define WIDTH 512
+# define HEIGHT 512
 
 
 typedef struct s_map

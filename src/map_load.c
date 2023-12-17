@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/17 13:50:22 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:42:04 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_element	ft_get_height_width(t_element elements, char *map_load)
 			width++;
 		i++;
 	}
-	elements.map->height = height;
+	elements.map->height = height + 1;
 	elements.map->width = width;
 	return (elements);
 }
@@ -99,9 +99,9 @@ t_element	ft_gen_map(t_element element)
 			else if (element.map->full_map[i][j] == '0')
 				mlx_image_to_window(element.mlx, element.floor, j * 64, i * 64);
 			else if (element.map->full_map[i][j] == 'C')
-				mlx_image_to_window(element.mlx, element.collect, j * 64, i * 64);
+				ft_collectible(j, i, element);
 			else if (element.map->full_map[i][j] == 'E')
-				mlx_image_to_window(element.mlx, element.exit, j * 64, i * 64);
+				ft_exit(j, i, element);
 			j++;
 		}
 		i++;
