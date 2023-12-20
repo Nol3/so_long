@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 06:02:30 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/20 19:50:36 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 21:12:32 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,8 @@ t_element	ft_enemy(int height, int width, t_element element)
 void	ft_collectible(int height, int width, t_element element)
 {
 	mlx_image_to_window(element.mlx, element.floor, width * 64, height * 64);
-	if (element.map->full_map[height][width] == 'C')
-	{
-		mlx_image_to_window(element.mlx, element.collect,
-			width * 64, height * 64);
-	}
+	mlx_image_to_window(element.mlx, element.collect, width * 64, height * 64);
 }
-
-// void	ft_collectible(int height, int width, t_element element)
-// {
-// 	mlx_image_to_window(element.mlx, element.floor, width * 64, height * 64);
-// 	mlx_image_to_window(element.mlx, element.collect, width * 64, height * 64);
-// }
 
 void	ft_open_exit(t_element element)
 {

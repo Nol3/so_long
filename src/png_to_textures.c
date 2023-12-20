@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:57:21 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/20 20:18:41 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 21:15:38 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_element	ft_load_textures(t_element element)
 
 	texture = mlx_load_png("./textures/chest.png");
 	element.collect = mlx_texture_to_image(element.mlx, texture);
+	//element.collect->instances->z = 1;
+	//Preguntar a Nico sobre estos valores y como arreglarlos para que no de Segmentation Fault
 	mlx_delete_texture(texture);
 	element = ft_alloc_columns(element);
 	return (element);
@@ -55,18 +57,18 @@ t_element	ft_alloc_columns(t_element element)
 	return (element);
 }
 
-t_element	ft_load_chest(t_element element)
-{
-	int				i;
-	mlx_texture_t	*texture;
+// t_element	ft_load_chest(t_element element)
+// {
+// 	int				i;
+// 	mlx_texture_t	*texture;
 
-	i = 0;
-	while (i < element.max_columns)
-	{
-		texture = mlx_load_png("./textures/column.png");
-		element.columns[i] = mlx_texture_to_image(element.mlx, texture);
-		mlx_delete_texture(texture);
-		i++;
-	}
-	return (element);
-}
+// 	i = 0;
+// 	while (i < element.max_columns)
+// 	{
+// 		texture = mlx_load_png("./textures/column.png");
+// 		element.columns[i] = mlx_texture_to_image(element.mlx, texture);
+// 		mlx_delete_texture(texture);
+// 		i++;
+// 	}
+// 	return (element);
+// }

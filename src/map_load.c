@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/20 20:17:53 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 21:08:45 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,8 @@ t_element	ft_get_height_width(t_element elements, char *map_load)
 	if (!elements.map)
 	{
 		perror("Error\nelements.map is NULL\n");
-		return elements;
+		return (elements);
 	}
-
 	i = 0;
 	height = 0;
 	width = 0;
