@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:57:21 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/20 19:49:03 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:18:41 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ t_element	ft_load_textures(t_element element)
 
 	texture = mlx_load_png("./textures/valere.png");
 	element.player = mlx_texture_to_image(element.mlx, texture);
+	mlx_delete_texture(texture);
+
+	texture = mlx_load_png("./textures/enemy.png");
+	element.enemy = mlx_texture_to_image(element.mlx, texture);
 	mlx_delete_texture(texture);
 
 	texture = mlx_load_png("./textures/floor.png");
@@ -51,19 +55,18 @@ t_element	ft_alloc_columns(t_element element)
 	return (element);
 }
 
-// t_element	ft_get_columns(t_element element, int height, int width)
-// {
-// 	static int	i = 0;
+t_element	ft_load_chest(t_element element)
+{
+	int				i;
+	mlx_texture_t	*texture;
 
-// 	if (element.map->full_map[height][width] == 'C')
-// 	{
-// 		element.columns[i] = mlx_texture_to_image(element.mlx, element.collect);
-// 		i++;
-// 	}
-// 	return (element);
-// }
-
-	// texture = mlx_load_png("./textures/enemy.png");
-	// element.enemy = mlx_texture_to_image(element.mlx, texture);
-	// element.enemy->instances->z = 1;
-	// mlx_delete_texture(texture);
+	i = 0;
+	while (i < element.max_columns)
+	{
+		texture = mlx_load_png("./textures/column.png");
+		element.columns[i] = mlx_texture_to_image(element.mlx, texture);
+		mlx_delete_texture(texture);
+		i++;
+	}
+	return (element);
+}

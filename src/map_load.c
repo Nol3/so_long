@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/20 18:15:40 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:17:53 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,30 +67,30 @@ char	**ft_create_map(char *map_load, int height, int width)
 
 t_element	ft_get_height_width(t_element elements, char *map_load)
 {
-    int	i;
-    int	height;
-    int	width;
+	int	i;
+	int	height;
+	int	width;
 
-    if (!elements.map)
-    {
-        perror("Error\nelements.map is NULL\n");
-        return elements;
-    }
+	if (!elements.map)
+	{
+		perror("Error\nelements.map is NULL\n");
+		return elements;
+	}
 
-    i = 0;
-    height = 0;
-    width = 0;
-    while (map_load[i])
-    {
-        if (map_load[i] == '\n')
-            height++;
-        if (height == 0)
-            width++;
-        i++;
-    }
-    elements.map->height = height + 1;
-    elements.map->width = width;
-    return (elements);
+	i = 0;
+	height = 0;
+	width = 0;
+	while (map_load[i])
+	{
+		if (map_load[i] == '\n')
+			height++;
+		if (height == 0)
+			width++;
+		i++;
+	}
+	elements.map->height = height + 1;
+	elements.map->width = width;
+	return (elements);
 }
 
 t_element	ft_gen_map(t_element element)
@@ -112,6 +112,8 @@ t_element	ft_gen_map(t_element element)
 				ft_collectible(i, j, element);
 			else if (element.map->full_map[i][j] == 'E')
 				ft_exit(i, j, element);
+			else if (element.map->full_map[i][j] == 'B')
+				ft_enemy(i, j, element);
 			j++;
 		}
 		i++;
@@ -145,55 +147,3 @@ t_element	ft_gen_player(t_element element)
 	}
 	return (element);
 }
-
-// char	**ft_create_map(char *map_load, int height, int width)
-// {
-// 	int		i;
-// 	int		j;
-// 	int		k;
-// 	char	**map;
-
-// 	i = 0;
-// 	k = 0;
-// 	map = malloc(sizeof(char *) * (height + 1));
-// 	if (!map)
-// 		perror("Error\nCreate map height Malloc error\n");
-// 	while (i < height && map_load[k] != '\0')
-// 	{
-// 		j = 0;
-// 		map[i] = malloc(sizeof(char) * (width + 1));
-// 		while (j < width && map_load[k] != '\n')
-// 		{
-// 			map[i][j] = map_load[k];
-// 			j++;
-// 			k++;
-// 		}
-// 		k++;
-// 		map[i][j] = '\0';
-// 		i++;
-// 	}
-// 	map[i] = 0;
-// 	return (map);
-// }
-
-// t_element	ft_get_height_width(t_element elements, char *map_load)
-// {
-// 	int	i;
-// 	int	height;
-// 	int	width;
-
-// 	i = 0;
-// 	height = 0;
-// 	width = 0;
-// 	while (map_load[i])
-// 	{
-// 		if (map_load[i] == '\n')
-// 			height++;
-// 		if (height == 0)
-// 			width++;
-// 		i++;
-// 	}
-// 	elements.map->height = height + 1;
-// 	elements.map->width = width;
-// 	return (elements);
-// }
