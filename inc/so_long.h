@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/17 16:15:03 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:49:16 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 # include <unistd.h>
 # include <memory.h>
 
-# define BUFF_SIZE 10000
-# define WIDTH 512
-# define HEIGHT 512
-
+# define BUFF_SIZE 1024
+// # define WIDTH 512
+// # define HEIGHT 512
 
 typedef struct s_map
 {
@@ -45,14 +44,14 @@ typedef struct s_element
 	int			player_pos_x;
 	int			player_pos_y;
 	int			max_columns;
-	int 		columns_counter;
+	int			chest_counter;
 	int			steps;
 	t_map		*map;
 }	t_element;
 
 //create.c
 int			ft_create_window(t_element element, char *file_read);
-t_element 	ft_init_window(t_element element);
+t_element	ft_init_window(t_element element);
 void		ft_close_window(void *element);
 
 //init.c
@@ -79,6 +78,8 @@ t_element	ft_get_height_width(t_element elements, char *map_load);
 char		**ft_free(char **map);
 
 //png_to_textures.c
+t_element	ft_chest_texture(t_element element);
+void		ft_add_chest(void *element);
 t_element	ft_load_textures(t_element element);
 t_element	ft_alloc_columns(t_element element);
 t_element	ft_get_columns(t_element element, int height, int width);
@@ -87,6 +88,7 @@ t_element	ft_gen_player(t_element element);
 
 //solve.c
 int			ft_check_if_reachable(t_element element, int y, int x, int *value);
+char		**ft_cpy_map(t_element element, char **map);
 
 //textures_to_window.c
 t_element	ft_valere(int height, int width, t_element element);
@@ -98,6 +100,7 @@ void		ft_open_exit(t_element element);
 //valere_move.c
 void		ft_movement(mlx_key_data_t keydata, void *data);
 int			ft_next_pos(int32_t height, int32_t width, char key, char **map);
-void		ft_add_step(t_element *element_ptr, int32_t *posx, int32_t *posy, char key);
+void		ft_add_step(t_element *element_ptr, int32_t *posx,
+				int32_t *posy, char key);
 
 #endif

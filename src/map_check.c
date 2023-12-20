@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:38:03 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/17 15:29:00 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:16:47 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ int	ft_check_extension(const char *file_name)
 	i = 0;
 	while (file_name[i])
 		i++;
-	if (file_name[i - 1] == 'r' && file_name[i - 2] == 'e' && file_name[i - 3] == 'b' && file_name[i - 4] == '.')
+	if (file_name[i - 1] == 'r' && file_name[i - 2] == 'e'
+		&& file_name[i - 3] == 'b' && file_name[i - 4] == '.')
 		return (1);
 	return (0);
 }
 
-int		ft_check_map(char *map)
+int	ft_check_map(char *map)
 {
 	int	i;
 	int	coll;
@@ -45,7 +46,7 @@ int		ft_check_map(char *map)
 			player++;
 		i++;
 	}
-	if ((coll < 1 || exit < 1 || player != 1 ) && ft_check_min_items(map) == 0)
+	if ((coll < 1 || exit < 1 || player != 1) && ft_check_min_items(map) == 0)
 	{
 		perror("Error\nInvalid map\n");
 		return (0);

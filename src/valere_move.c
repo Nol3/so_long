@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:28:30 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/17 12:40:05 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:43:34 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_movement(mlx_key_data_t keydata, void *data)
 {
 	t_element	*element_ptr;
-	int32_t	*posx;
-	int32_t	*posy;
+	int32_t		*posx;
+	int32_t		*posy;
 
 	element_ptr = data;
 	posx = &element_ptr->player->instances[0].x;
@@ -57,7 +57,8 @@ int	ft_next_pos(int32_t height, int32_t width, char key, char **map)
 	return (res);
 }
 
-void	ft_add_step(t_element *element_ptr, int32_t *posx, int32_t *posy, char key)
+void	ft_add_step(t_element *element_ptr,
+		int32_t *posx, int32_t *posy, char key)
 {
 	if (key == 'w')
 		*posy -= 64;

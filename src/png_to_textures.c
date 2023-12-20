@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:57:21 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/11 21:00:28 by alcarden         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:49:03 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_element	ft_load_textures(t_element element)
 	element.floor = mlx_texture_to_image(element.mlx, texture);
 	mlx_delete_texture(texture);
 
-	element = ft_alloc_columns(element);
 	texture = mlx_load_png("./textures/wall.png");
 	element.wall = mlx_texture_to_image(element.mlx, texture);
 	mlx_delete_texture(texture);
@@ -36,11 +35,7 @@ t_element	ft_load_textures(t_element element)
 	texture = mlx_load_png("./textures/chest.png");
 	element.collect = mlx_texture_to_image(element.mlx, texture);
 	mlx_delete_texture(texture);
-
-	texture = mlx_load_png("./textures/enemy.png");
-	element.enemy = mlx_texture_to_image(element.mlx, texture);
-	mlx_delete_texture(texture);
-
+	element = ft_alloc_columns(element);
 	return (element);
 }
 
@@ -68,4 +63,7 @@ t_element	ft_alloc_columns(t_element element)
 // 	return (element);
 // }
 
-
+	// texture = mlx_load_png("./textures/enemy.png");
+	// element.enemy = mlx_texture_to_image(element.mlx, texture);
+	// element.enemy->instances->z = 1;
+	// mlx_delete_texture(texture);
