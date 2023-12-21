@@ -24,35 +24,30 @@
 // # define WIDTH 512
 // # define HEIGHT 512
 
-typedef struct s_map
-{
-	int		width;
-	int		height;
-	char	**full_map;
-}	t_map;
-
 typedef struct s_element
 {
-	mlx_t		*mlx;
+	mlx_t			*mlx;
 	mlx_image_t	*player;
 	mlx_image_t	*floor;
 	mlx_image_t	*wall;
 	mlx_image_t	*exit;
-	mlx_image_t	*collect;
 	mlx_image_t	*enemy;
-	mlx_image_t	**columns;
-	int			player_pos_x;
-	int			player_pos_y;
-	int			max_columns;
-	int			chest_counter;
-	int			steps;
-	t_map		*map;
+	mlx_image_t	*chest;
+	int					player_pos_x;
+	int					player_pos_y;
+	int					max_chest;
+	int					chest_counter;
+	int					steps;
+	int					width;
+	int					height;
+	char			**full_map;
+	char			**map_cpy;
 }	t_element;
 
 //create.c
-int			ft_create_window(t_element element, char *file_read);
+int				ft_create_window(t_element element, char *file_read);
 t_element	ft_init_window(t_element element);
-void		ft_close_window(void *element);
+void			ft_close_window(void *element);
 
 //init.c
 t_element	ft_init_elements(t_element elements);
@@ -70,7 +65,7 @@ int			ft_check_map(char *map);
 int			ft_check_min_items(char *map);
 
 //map_load.c
-char		*ft_read_map(char *str);
+char	*ft_read_map(char *file, t_element *element);
 char		**ft_create_map(char *map_load, int height, int width);
 t_element	ft_get_height_width(t_element elements, char *map_load);
 
@@ -79,7 +74,7 @@ char		**ft_free(char **map);
 
 //png_to_textures.c
 t_element	ft_chest_texture(t_element element);
-void		ft_add_chest(void *element);
+void			ft_add_chest(void *element);
 t_element	ft_load_textures(t_element element);
 t_element	ft_alloc_columns(t_element element);
 t_element	ft_get_columns(t_element element, int height, int width);
@@ -92,15 +87,15 @@ char		**ft_cpy_map(t_element element, char **map);
 
 //textures_to_window.c
 t_element	ft_valere(int height, int width, t_element element);
-void		ft_collectible(int height, int width, t_element element);
+void			ft_collectible(int height, int width, t_element element);
 t_element	ft_exit(int height, int width, t_element element);
 t_element	ft_enemy(int height, int width, t_element element);
-void		ft_open_exit(t_element element);
+void			ft_open_exit(t_element element);
 
 //valere_move.c
-void		ft_movement(mlx_key_data_t keydata, void *data);
-int			ft_next_pos(int32_t height, int32_t width, char key, char **map);
-void		ft_add_step(t_element *element_ptr, int32_t *posx,
+void			ft_movement(mlx_key_data_t keydata, void *data);
+int				ft_next_pos(int32_t height, int32_t width, char key, char **map);
+void			ft_add_step(t_element *element_ptr, int32_t *posx,
 				int32_t *posy, char key);
 
 #endif

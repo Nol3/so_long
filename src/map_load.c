@@ -12,28 +12,33 @@
 
 #include "../inc/so_long.h"
 
-char	*ft_read_map(char *file)
+char	*ft_read_map(char *file, t_element *element)
 {
 	int		fd;
-	int		fsize;
-	char	*buff;
-	char	*file_read;
+	char	*temp;
+	char	*big_str;
+	char	*str;
 
-	fsize = 0;
-	ft_check_extension(file);
-	buff = malloc(sizeof(char) * 2);
 	fd = open(file, O_RDONLY);
-	while (read(fd, buff, 1) == 1)
-		fsize++;
-	free(buff);
-	if (fsize == 0)
-		perror("Error\nEmpty file\n");
+	big_str = ft_strdup("");
+	if (fd == -1)
+		print_error("File error or empty");
+	str = get_next_line(fd);
+	if (!str)
+		print_error("Empty file");
+	while (str != '\0')
+	{
+		temp = ft_strjoin(big_str, str);
+		free(big_str);
+		big_str = temp;
+		free(str);
+		str = get_next_line(fd);
+	}
+	free(str);
+	free(temp);
 	close(fd);
-	fd = open(file, O_RDONLY);
-	file_read = malloc(sizeof(char) * fsize + 1);
-	read(fd, file_read, fsize);
-	file_read[fsize] = '\0';
-	close(fd);
+	element->full_map = ft_split(file_read, '\n');
+	element->map_cpy = ft_split(file_read, '\n');
 	return (file_read);
 }
 
@@ -71,9 +76,9 @@ t_element	ft_get_height_width(t_element elements, char *map_load)
 	int	height;
 	int	width;
 
-	if (!elements.map)
+	if (!elements->map)
 	{
-		perror("Error\nelements.map is NULL\n");
+		perror("Error\nelements->map is NULL\n");
 		return (elements);
 	}
 	i = 0;
@@ -87,8 +92,8 @@ t_element	ft_get_height_width(t_element elements, char *map_load)
 			width++;
 		i++;
 	}
-	elements.map->height = height + 1;
-	elements.map->width = width;
+	elements->height = height + 1;
+	elements->width = width;
 	return (elements);
 }
 

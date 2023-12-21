@@ -12,44 +12,43 @@
 
 #include "../inc/so_long.h"
 
-t_element	ft_load_textures(t_element element)
+t_element	ft_load_textures(t_element *element)
 {
 	mlx_texture_t	*texture;
 
 	texture = mlx_load_png("./textures/valere.png");
-	element.player = mlx_texture_to_image(element.mlx, texture);
+	element->player = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
 
 	texture = mlx_load_png("./textures/enemy.png");
-	element.enemy = mlx_texture_to_image(element.mlx, texture);
+	element->enemy = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
 
 	texture = mlx_load_png("./textures/floor.png");
-	element.floor = mlx_texture_to_image(element.mlx, texture);
+	element->floor = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
 
 	texture = mlx_load_png("./textures/wall.png");
-	element.wall = mlx_texture_to_image(element.mlx, texture);
+	element->wall = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
 
 	texture = mlx_load_png("./textures/exit.png");
-	element.exit = mlx_texture_to_image(element.mlx, texture);
+	element->exit = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
 
 	texture = mlx_load_png("./textures/chest.png");
-	element.collect = mlx_texture_to_image(element.mlx, texture);
-	//element.collect->instances->z = 1;
-	//Preguntar a Nico sobre estos valores y como arreglarlos para que no de Segmentation Fault
+	element->collect = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
-	element = ft_alloc_columns(element);
+
+	element = ft_alloc_chest(element);
 	return (element);
 }
 
-t_element	ft_alloc_columns(t_element element)
+t_element	ft_alloc_chest(t_element element)
 {
-	element.columns = malloc(sizeof(mlx_image_t *) * element.max_columns + 1);
-	element.columns[element.max_columns] = 0;
-	if (!element.columns)
+	element.chest = malloc(sizeof(mlx_image_t *) * element.max_chest + 1);
+	element.chest[element.max_chest] = 0;
+	if (!element.chest)
 	{
 		perror("Error\nMalloc error\n");
 		exit(EXIT_FAILURE);
@@ -63,10 +62,10 @@ t_element	ft_alloc_columns(t_element element)
 // 	mlx_texture_t	*texture;
 
 // 	i = 0;
-// 	while (i < element.max_columns)
+// 	while (i < element.max_chest)
 // 	{
 // 		texture = mlx_load_png("./textures/column.png");
-// 		element.columns[i] = mlx_texture_to_image(element.mlx, texture);
+// 		element.chest[i] = mlx_texture_to_image(element->mlx, texture);
 // 		mlx_delete_texture(texture);
 // 		i++;
 // 	}

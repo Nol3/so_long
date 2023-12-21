@@ -19,7 +19,6 @@ int	ft_create_window(t_element element, char *file_read)
 
 	ptr = &element;
 	tester = 0;
-	element = ft_init_window(element);
 	element = ft_get_height_width(element, file_read);
 	element = ft_gen_map(element);
 	// tester = ft_check_if_reachable(element, element.player_pos_x, element.player_pos_y, &tester);
@@ -39,7 +38,7 @@ int	ft_create_window(t_element element, char *file_read)
 	return (EXIT_SUCCESS);
 }
 
-t_element	ft_init_window(t_element element)
+/* t_element	ft_init_window(t_element element)
 {
 	element.mlx = mlx_init(element.map->width * 64, element.map->height * 64, "So_long", false);
 	if (!element.mlx)
@@ -49,7 +48,7 @@ t_element	ft_init_window(t_element element)
 	}
 	element = ft_load_textures(element);
 	return (element);
-}
+} */
 
 void	ft_close_window(void *element)
 {

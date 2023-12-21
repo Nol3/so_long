@@ -14,21 +14,24 @@
 
 int32_t	main(int argc, char **argv)
 {
-	t_element	element;
+	t_element	*element;
 	char		*map_read;
 
-	element.map = malloc(sizeof(t_map));
+	element = malloc(sizeof(t_element));
 	if (argc == 2)
 	{
 		if (ft_check_extension(argv[1]) == 1)
 		{
 			element = ft_init_elements(element);
-			map_read = ft_read_map(argv[1]);
-			if (ft_check_map(map_read) == 0)
+			map_read = ft_read_map(argv[1], element);
+			if ((ft_check_map(map_read) == 0 && ft_check_min_items(map_read) == 0))
 				return (0);
 			element = ft_get_height_width(element, map_read);
-			element.map->full_map = ft_create_map(map_read,
-					element.map->height, element.map->width);
+			element->mlx = mlx_init(element->width, element->height, "so_long", false);
+			ft_load_textures(element);
+			element = ft_gen_map(element);
+			element->full_map = ft_create_map(map_read,
+					element->height, element->width);
 			ft_create_window(element, map_read);
 		}
 		else
