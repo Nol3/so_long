@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 05:41:43 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/20 21:13:39 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:59:50 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,15 @@ int	ft_create_window(t_element element, char *file_read)
 
 	ptr = &element;
 	tester = 0;
-	element = ft_get_height_width(element, file_read);
-	element = ft_gen_map(element);
+	*ptr = ft_gen_map(*ptr);
+	ptr->full_map = ft_create_map(ptr->full_map,
+			ptr->height, ptr->width);
 	// tester = ft_check_if_reachable(element, element.player_pos_x, element.player_pos_y, &tester);
 	// if (tester != 1)
 	// {
 	// 	ft_printf("Error:\n El mapa no tiene solución\n");
 	// 	exit(1);
 	// }
-	element.collect = 0;
-	//element.map->full_map = ft_free(element.map->full_map);
-	element.map->full_map = ft_create_map(file_read, element.map->height, element.map->width);
-	//free(file_read);
 	mlx_close_hook(element.mlx, ft_close_window, ptr);
 	mlx_key_hook(element.mlx, ft_movement, ptr);
 	ft_printf("element.player.count = %d\n", element.player->count);
@@ -55,7 +52,7 @@ void	ft_close_window(void *element)
 	t_element	*ptr;
 
 	ptr = element;
-	free(ptr->collect);
-	ptr->map->full_map = ft_free(ptr->map->full_map);
+	free(ptr->chest);
+	ptr->full_map = ft_free(ptr->full_map);
 	mlx_close_window(ptr->mlx);
 }
