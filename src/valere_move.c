@@ -6,10 +6,9 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:44:55 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/21 14:44:55 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:13:36 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/so_long.h"
 
@@ -25,20 +24,20 @@ void	ft_movement(mlx_key_data_t keydata, void *data)
 	if (keydata.action == MLX_PRESS)
 	{
 		if (keydata.key == MLX_KEY_W && ft_next_pos(*posy / 64, *posx / 64, 'w',
-				element_ptr->map->full_map) != 1)
+				element_ptr->full_map) != 1)
 			ft_add_step(element_ptr, posx, posy, 'w');
 		if (keydata.key == MLX_KEY_A && ft_next_pos(*posy / 64, *posx / 64, 'a',
-				element_ptr->map->full_map) != 1)
+				element_ptr->full_map) != 1)
 			ft_add_step(element_ptr, posx, posy, 'a');
 		if (keydata.key == MLX_KEY_S && ft_next_pos(*posy / 64, *posx / 64, 's',
-				element_ptr->map->full_map) != 1)
+				element_ptr->full_map) != 1)
 			ft_add_step(element_ptr, posx, posy, 's');
 		if (keydata.key == MLX_KEY_D && ft_next_pos(*posy / 64, *posx / 64, 'd',
-				element_ptr->map->full_map) != 1)
+				element_ptr->full_map) != 1)
 			ft_add_step(element_ptr, posx, posy, 'd');
 		if (keydata.key == MLX_KEY_ESCAPE)
 			ft_close_window(element_ptr);
-		ft_open_exit(*element_ptr);
+		ft_open_exit(element_ptr);
 	}
 }
 

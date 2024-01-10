@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:38:03 by alcarden          #+#    #+#             */
-/*   Updated: 2023/12/20 16:16:47 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:34:50 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,53 +25,54 @@ int	ft_check_extension(const char *file_name)
 	return (0);
 }
 
-int	ft_check_map(char *map)
+int	ft_check_map(char **map)
 {
 	int	i;
-	int	coll;
-	int	exit;
-	int	player;
+	int	j;
 
 	i = 0;
-	coll = 0;
-	exit = 0;
-	player = 0;
+	j = 0;
 	while (map[i])
 	{
-		if (map[i] == 'C')
-			coll++;
-		if (map[i] == 'E')
-			exit++;
-		if (map[i] == 'P')
-			player++;
+		while (map[i][j])
+		{
+			if ((map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'C'
+					&& map[i][j] != 'E' && map[i][j] != 'P')
+				|| (map[i][j] == 'P' && map[i][j + 1] != '\0'))
+				return (0);
+			j++;
+		}
+		j = 0;
 		i++;
-	}
-	if ((coll < 1 || exit < 1 || player != 1) && ft_check_min_items(map) == 0)
-	{
-		perror("Error\nInvalid map\n");
-		return (0);
 	}
 	return (1);
 }
 
-int	ft_check_min_items(char *map)
+int	ft_check_min_items(char **map)
 {
 	int	i;
-	int	coll;
-	int	exit;
+	int	j;
+	int	chest_counter;
+	int	exit_counter;
 
 	i = 0;
-	coll = 0;
-	exit = 0;
+	j = 0;
+	chest_counter = 0;
+	exit_counter = 0;
 	while (map[i])
 	{
-		if (map[i] == 'C')
-			coll++;
-		if (map[i] == 'E')
-			exit++;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'C')
+				chest_counter++;
+			if (map[i][j] == 'E')
+				exit_counter++;
+			j++;
+		}
+		j = 0;
 		i++;
 	}
-	if (coll < 1 || exit < 1)
+	if (chest_counter < 1 || exit_counter < 1)
 		return (0);
 	return (1);
 }

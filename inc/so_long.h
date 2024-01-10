@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/09 20:00:07 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:51:54 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_element
 }	t_element;
 
 //create.c
-int				ft_create_window(t_element element, char *file_read);
+int				ft_create_window(t_element *element);
 t_element		ft_init_window(t_element element);
 void			ft_close_window(void *element);
 
@@ -61,20 +61,20 @@ void			ft_get_exit_img(t_element *mlx);
 
 //map_check.c
 int				ft_check_extension(const char *file_name);
-int				ft_check_map(char *map);
-int				ft_check_min_items(char *map);
+int				ft_check_map(char **map);
+int				ft_check_min_items(char **map);
 
 //map_load.c
-void			ft_read_map(char *file, t_element *element);
-char			**ft_create_map(char *map_load, int height, int width);
-t_element		ft_get_height_width(t_element elements, char *map_load);
+void	ft_read_map(char *file, char **full_map, char **map_cpy);
+//char			**ft_create_map(char *map_load, int height, int width);
+t_element		ft_get_height_width(t_element elements, char **map_load);
 
 //outs.c
 char			**ft_free(char **map);
 
 //png_to_textures.c
 t_element		ft_chest_texture(t_element element);
-void			ft_add_chest(void *element);
+t_element		*ft_alloc_chest(t_element *element);
 t_element		*ft_load_textures(t_element *element);
 t_element		ft_alloc_columns(t_element element);
 t_element		ft_get_columns(t_element element, int height, int width);
@@ -88,7 +88,7 @@ char			**ft_cpy_map(t_element element, char **map);
 
 //textures_to_window.c
 t_element		ft_valere(int height, int width, t_element *element);
-void			ft_collectible(int height, int width, t_element *element);
+t_element		ft_collectible(int height, int width, t_element *element);
 t_element		ft_exit(int height, int width, t_element *element);
 t_element		ft_enemy(int height, int width, t_element *element);
 void			ft_open_exit(t_element *element);

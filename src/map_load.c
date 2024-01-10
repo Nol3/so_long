@@ -6,13 +6,13 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/09 20:03:39 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:51:57 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	ft_read_map(char *file, t_element *element)
+void	ft_read_map(char *file, char **full_map, char **map_cpy)
 {
 	int		fd;
 	char	*temp;
@@ -22,11 +22,11 @@ void	ft_read_map(char *file, t_element *element)
 	fd = open(file, O_RDONLY);
 	big_str = ft_strdup("");
 	if (fd == -1)
-		print_error("File error or empty");
+		perror("File error or empty");
 	str = get_next_line(fd);
 	if (!str)
-		print_error("Empty file");
-	while (str != '\0')
+		perror("Empty file");
+	while (str != NULL && str[0] != '\0')
 	{
 		temp = ft_strjoin(big_str, str);
 		free(big_str);
@@ -37,62 +37,53 @@ void	ft_read_map(char *file, t_element *element)
 	free(str);
 	free(temp);
 	close(fd);
-	element->full_map = ft_split(big_str, '\n');
-	element->map_cpy = ft_split(big_str, '\n');
+	full_map = ft_split(big_str, '\n');
+	map_cpy = ft_split(big_str, '\n');
 }
 
-char	**ft_create_map(char *map_load, int height, int width)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	**map;
+// char	**ft_create_map(char *map_load, int height, int width)
+// {
+// 	int		i;
+// 	int		j;
+// 	int		k;
+// 	char	**map;
 
-	i = 0;
-	k = 0;
-	map = malloc(sizeof(char *) * (height + 1));
-	while (i < height && map_load[k] != '\0')
-	{
-		j = 0;
-		map[i] = malloc(sizeof(char) * (width + 1));
-		while (j < width && map_load[k] != '\n')
-		{
-			map[i][j] = map_load[k];
-			j++;
-			k++;
-		}
-		k++;
-		map[i][j] = '\0';
-		i++;
-	}
-	map[i] = 0;
-	return (map);
-}
+// 	i = 0;
+// 	k = 0;
+// 	map = malloc(sizeof(char *) * (height + 1));
+// 	while (i < height && map_load[k] != '\0')
+// 	{
+// 		j = 0;
+// 		map[i] = malloc(sizeof(char) * (width + 1));
+// 		while (j < width && map_load[k] != '\n')
+// 		{
+// 			map[i][j] = map_load[k];
+// 			j++;
+// 			k++;
+// 		}
+// 		k++;
+// 		map[i][j] = '\0';
+// 		i++;
+// 	}
+// 	map[i] = 0;
+// 	return (map);
+// }
 
-t_element	ft_get_height_width(t_element elements, char *map_load)
+t_element	ft_get_height_width(t_element elements, char **map_load)
 {
 	int	i;
-	int	height;
-	int	width;
+	int	j;
 
-	if (!elements.full_map)
-	{
-		perror("Error\nelements->map is NULL\n");
-		return (elements);
-	}
 	i = 0;
-	height = 0;
-	width = 0;
 	while (map_load[i])
 	{
-		if (map_load[i] == '\n')
-			height++;
-		if (height == 0)
-			width++;
+		j = 0;
+		while (map_load[i][j])
+			j++;
 		i++;
 	}
-	elements.height = height + 1;
-	elements.width = width;
+	elements.height = i * 64;
+	elements.width = j * 64;
 	return (elements);
 }
 
