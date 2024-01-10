@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <memory.h>
 
-# define BUFF_SIZE 1024
+# define BUFFER_SIZE 512
 // # define WIDTH 512
 // # define HEIGHT 512
 

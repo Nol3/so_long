@@ -56,7 +56,7 @@ void	ft_open_exit(t_element *element)
 		if (element->full_map[element->player->instances[0].y
 				/ 64][element->player->instances[0].x / 64] == 'E')
 		{
-			ft_printf("¡You Won!\n");
+			ft_printf("¡Ganas!\n");
 			ft_close_window(element);
 		}
 	}
