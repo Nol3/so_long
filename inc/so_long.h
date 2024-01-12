@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/10 19:51:54 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:00:17 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_element
 	int				player_pos_y;
 	int				max_chest;
 	int				chest_counter;
+	int				count_player;
+	int				count_exit;
 	int				steps;
 	int				width;
 	int				height;
@@ -70,7 +72,8 @@ void	ft_read_map(char *file, char **full_map, char **map_cpy);
 t_element		ft_get_height_width(t_element elements, char **map_load);
 
 //outs.c
-char			**ft_free(char **map);
+void			ft_free_game(t_element *element);
+void			ft_free_full_map(t_element *element);
 
 //png_to_textures.c
 t_element		ft_chest_texture(t_element element);
@@ -99,6 +102,13 @@ int				ft_next_pos(int32_t height, int32_t width,
 					char key, char **map);
 void			ft_add_step(t_element *element_ptr, int32_t *posx,
 					int32_t *posy, char key);
+
+//validate.c
+void			ft_verify_map(char **map, t_element *element);
+void			ft_check_items(t_element *element);
+void			ft_verify_counts(t_element *element);
+void			ft_count_column(t_element *element);
+
 
 //wall_and_floor.c
 void			*ft_wall(int height, int width, t_element *element);

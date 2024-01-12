@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/10 19:51:57 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:36:52 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_read_map(char *file, char **full_map, char **map_cpy)
 	char	*str;
 
 	fd = open(file, O_RDONLY);
-	big_str = ft_strdup("");
+	big_str = malloc(sizeof(char) * 2);
 	if (fd == -1)
 		perror("File error or empty");
 	str = get_next_line(fd);
@@ -41,33 +41,6 @@ void	ft_read_map(char *file, char **full_map, char **map_cpy)
 	map_cpy = ft_split(big_str, '\n');
 }
 
-// char	**ft_create_map(char *map_load, int height, int width)
-// {
-// 	int		i;
-// 	int		j;
-// 	int		k;
-// 	char	**map;
-
-// 	i = 0;
-// 	k = 0;
-// 	map = malloc(sizeof(char *) * (height + 1));
-// 	while (i < height && map_load[k] != '\0')
-// 	{
-// 		j = 0;
-// 		map[i] = malloc(sizeof(char) * (width + 1));
-// 		while (j < width && map_load[k] != '\n')
-// 		{
-// 			map[i][j] = map_load[k];
-// 			j++;
-// 			k++;
-// 		}
-// 		k++;
-// 		map[i][j] = '\0';
-// 		i++;
-// 	}
-// 	map[i] = 0;
-// 	return (map);
-// }
 
 t_element	ft_get_height_width(t_element elements, char **map_load)
 {
@@ -82,8 +55,8 @@ t_element	ft_get_height_width(t_element elements, char **map_load)
 			j++;
 		i++;
 	}
-	elements.height = i * 64;
-	elements.width = j * 64;
+	elements.height = i;
+	elements.width = j;
 	return (elements);
 }
 

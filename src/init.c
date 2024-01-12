@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:18:38 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/09 17:03:12 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:35:23 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ t_element	ft_init_elements(t_element elements)
 	elements.chest_counter = 0;
 	elements.max_chest = 0;
 	elements.steps = 0;
+	elements.count_player = 0;
+	elements.count_exit = 0;
 	return (elements);
 }
