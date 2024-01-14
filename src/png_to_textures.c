@@ -6,13 +6,13 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:57:21 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/10 19:31:20 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:30:42 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_element	*ft_load_textures(t_element *element)
+void	ft_load_textures(t_element *element)
 {
 	mlx_texture_t	*texture;
 
@@ -34,33 +34,5 @@ t_element	*ft_load_textures(t_element *element)
 	texture = mlx_load_png("./textures/chest.png");
 	element->chest = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
-	element = ft_alloc_chest(element);
-	return (element);
+	//element = ft_alloc_chest(element);
 }
-
-t_element	*ft_alloc_chest(t_element *element)
-{
-	element->chest = malloc(sizeof(mlx_image_t *) * element->max_chest + 1);
-	if (!element->chest)
-	{
-		perror("Error\nMalloc error\n");
-		exit(EXIT_FAILURE);
-	}
-	return (element);
-}
-
-// t_element	ft_load_chest(t_element element)
-// {
-// 	int				i;
-// 	mlx_texture_t	*texture;
-
-// 	i = 0;
-// 	while (i < element.max_chest)
-// 	{
-// 		texture = mlx_load_png("./textures/column.png");
-// 		element.chest[i] = mlx_texture_to_image(element->mlx, texture);
-// 		mlx_delete_texture(texture);
-// 		i++;
-// 	}
-// 	return (element);
-// }

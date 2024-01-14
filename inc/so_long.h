@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/14 17:51:54 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:32:35 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ t_element		ft_init_window(t_element element);
 void			ft_close_window(void *element);
 
 //init.c
-t_element		ft_init_elements(t_element elements);
-void		ft_validate_map(t_game *element);
+void		ft_init_elements(t_element elements);
+void		ft_validate_map(t_element *element);
 
 //prefab.c
 void			ft_get_wall_img(t_element *mlx);
@@ -64,16 +64,20 @@ void			ft_get_exit_img(t_element *mlx);
 
 //map_check.c
 int				ft_check_extension(const char *file_name);
-int				ft_check_map(char **map);
-int				ft_check_min_items(char **map);
+// int				ft_check_map(char **map);
+// int				ft_check_min_items(char **map);
 
 //map_load.c
 void	ft_read_map(char *file, char **full_map, char **map_cpy);
 //char			**ft_create_map(char *map_load, int height, int width);
-t_element		ft_get_height_width(t_element elements, char **map_load);
+void		ft_get_height_width(t_element elements, char **map_load);
 
-//move2.c
-
+//move.c
+void	ft_movement(mlx_key_data_t paramkey, t_element *element);
+void	ft_movement_up(t_element *element);
+void	ft_movement_down(t_element *element);
+void	ft_movement_left(t_element *element);
+void	ft_movement_right(t_element *element);
 
 //outs.c
 void			ft_free_game(t_element *element);
@@ -82,16 +86,17 @@ void			ft_free_full_map(t_element *element);
 //png_to_textures.c
 t_element		ft_chest_texture(t_element element);
 t_element		*ft_alloc_chest(t_element *element);
-t_element		*ft_load_textures(t_element *element);
+void		*ft_load_textures(t_element *element);
 t_element		ft_alloc_columns(t_element element);
 t_element		ft_get_columns(t_element element, int height, int width);
 void			ft_gen_map(mlx_t *mlx, t_element *element);
 t_element		*ft_gen_player(t_element *element);
 
 //solve.c
-int				ft_check_if_reachable(t_element element, int y,
-					int x, int *value);
-char			**ft_cpy_map(t_element element, char **map);
+void		flood_fill(t_element *element, int player_pos_x, int player_pos_y);
+void		ft_to_fill(t_element *element, int player_pos_x, int player_pos_y);
+void		ft_player_position(t_element *element, int *pl_width, int *pl_height);
+void		ft_verify_win(t_element *element);
 
 //textures_to_window.c
 void			ft_valere(mlx_t *mlx, int height, int width, t_element *element);
@@ -101,11 +106,11 @@ void			ft_enemy(mlx_t *mlx, int height, int width, t_element *element);
 void			ft_open_exit(t_element *element);
 
 //valere_move.c
-void			ft_movement(mlx_key_data_t keydata, void *data);
-int				ft_next_pos(int32_t height, int32_t width,
-					char key, char **map);
-void			ft_add_step(t_element *element_ptr, int32_t *posx,
-					int32_t *posy, char key);
+// void			ft_movement(mlx_key_data_t keydata, void *data);
+// int				ft_next_pos(int32_t height, int32_t width,
+// 					char key, char **map);
+// void			ft_add_step(t_element *element_ptr, int32_t *posx,
+// 					int32_t *posy, char key);
 
 //validate.c
 void			ft_verify_map(char **map, t_element *element);

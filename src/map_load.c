@@ -6,13 +6,13 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/14 20:55:52 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:20:42 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	ft_read_map(char *file, char **full_map, char **map_cpy)
+void	ft_read_map(char *file, t_element *element)
 {
 	int		fd;
 	char	*temp;
@@ -37,12 +37,12 @@ void	ft_read_map(char *file, char **full_map, char **map_cpy)
 	free(str);
 	free(temp);
 	close(fd);
-	full_map = ft_split(big_str, '\n');
-	map_cpy = ft_split(big_str, '\n');
+	element->full_map = ft_split(big_str, '\n');
+	element->map_cpy = ft_split(big_str, '\n');
 }
 
 
-t_element	ft_get_height_width(t_element elements, char **map_load)
+void	ft_get_height_width(t_element *element, char **map_load)
 {
 	int	i;
 	int	j;
@@ -55,9 +55,8 @@ t_element	ft_get_height_width(t_element elements, char **map_load)
 			j++;
 		i++;
 	}
-	elements.height = i;
-	elements.width = j;
-	return (elements);
+	element->height = i;
+	element->width = j;
 }
 
 void	ft_gen_map(mlx_t *mlx, t_element *element)

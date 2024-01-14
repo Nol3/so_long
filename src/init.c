@@ -6,33 +6,32 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:18:38 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/14 17:55:59 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:24:40 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_element	ft_init_elements(t_element elements)
+void	ft_init_elements(t_element *element)
 {
-	elements.mlx = 0;
-	elements.wall = 0;
-	elements.floor = 0;
-	elements.chest = 0;
-	elements.player = 0;
-	elements.exit = 0;
-	elements.enemy = 0;
-	elements.width = 0;
-	elements.height = 0;
-	elements.full_map = 0;
-	elements.map_cpy = 0;
-	elements.player_pos_x = 0;
-	elements.player_pos_y = 0;
-	elements.chest_counter = 0;
-	elements.max_chest = 0;
-	elements.steps = 0;
-	elements.count_player = 0;
-	elements.count_exit = 0;
-	return (elements);
+	element->mlx = 0;
+	element->wall = 0;
+	element->floor = 0;
+	element->chest = 0;
+	element->player = 0;
+	element->exit = 0;
+	element->enemy = 0;
+	element->width = 0;
+	element->height = 0;
+	element->full_map = 0;
+	element->map_cpy = 0;
+	element->player_pos_x = 0;
+	element->player_pos_y = 0;
+	element->chest_counter = 0;
+	element->max_chest = 0;
+	element->steps = 0;
+	element->count_player = 0;
+	element->count_exit = 0;
 }
 
 void	ft_validate_map(t_element *element)
@@ -41,7 +40,7 @@ void	ft_validate_map(t_element *element)
 	int	y;
 
 	y = 0;
-	while (element-> full_map[y])
+	while (element->full_map[y])
 	{
 		x = 0;
 		while (element->full_map[y][x])
