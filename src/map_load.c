@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/12 17:36:52 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:55:52 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_element	ft_get_height_width(t_element elements, char **map_load)
 	return (elements);
 }
 
-t_element	*ft_gen_map(t_element *element)
+void	ft_gen_map(mlx_t *mlx, t_element *element)
 {
 	int	i;
 	int	j;
@@ -77,15 +77,13 @@ t_element	*ft_gen_map(t_element *element)
 				ft_floor(i, j, element);
 			else if (element->full_map[i][j] == 'C')
 				ft_collectible(i, j, element);
-			else if (element->full_map[i][j] == 'B')
-				ft_enemy(i, j, element);
+			else if (element.full_map[i][j] == 'E')
+				ft_exit(i, j, element);
+			else if (element->full_map[i][j] == 'P')
+				ft_valere(i, j, element);
 			j++;
 		}
 		i++;
-	}
-	{
-		element = ft_gen_player(element);
-		return (element);
 	}
 }
 
@@ -120,26 +118,26 @@ t_element	*ft_gen_map(t_element *element)
 // 	}
 // }
 
-t_element	*ft_gen_player(t_element *element)
-{
-	int	i;
-	int	j;
+// t_element	*ft_gen_player(t_element *element)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	while (element->full_map[i])
-	{
-		j = 0;
-		while (element->full_map[i][j])
-		{
-			if (element->full_map[i][j] == 'P')
-			{
-				*element = ft_valere(i, j, element);
-				element->player_pos_x = j;
-				element->player_pos_y = i;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (element);
-}
+// 	i = 0;
+// 	while (element->full_map[i])
+// 	{
+// 		j = 0;
+// 		while (element->full_map[i][j])
+// 		{
+// 			if (element->full_map[i][j] == 'P')
+// 			{
+// 				*element = ft_valere(i, j, element);
+// 				element->player_pos_x = j;
+// 				element->player_pos_y = i;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (element);
+// }

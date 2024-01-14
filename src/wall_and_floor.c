@@ -6,22 +6,20 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:11:47 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/09 19:26:19 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:46:13 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	*ft_wall(int height, int width, t_element *element)
+void	ft_wall(mlx_t *mlx, int height, int width, t_element *element)
 {
-	mlx_image_to_window(element->mlx, element->wall,
+	mlx_image_to_window(mlx, element->wall,
 		width * 64, height * 64);
-	return (element);
 }
 
-void	*ft_floor(int height, int width, t_element *element)
+void	ft_floor(mlx_t *mlx, int height, int width, t_element *element)
 {
-	mlx_image_to_window(element->mlx, element->floor,
+	mlx_image_to_window(mlx, element->floor,
 		width * 64, height * 64);
-	return (element);
 }

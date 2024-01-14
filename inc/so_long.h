@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/12 18:00:17 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:51:54 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void			ft_close_window(void *element);
 
 //init.c
 t_element		ft_init_elements(t_element elements);
+void		ft_validate_map(t_game *element);
 
 //prefab.c
 void			ft_get_wall_img(t_element *mlx);
@@ -71,6 +72,9 @@ void	ft_read_map(char *file, char **full_map, char **map_cpy);
 //char			**ft_create_map(char *map_load, int height, int width);
 t_element		ft_get_height_width(t_element elements, char **map_load);
 
+//move2.c
+
+
 //outs.c
 void			ft_free_game(t_element *element);
 void			ft_free_full_map(t_element *element);
@@ -81,7 +85,7 @@ t_element		*ft_alloc_chest(t_element *element);
 t_element		*ft_load_textures(t_element *element);
 t_element		ft_alloc_columns(t_element element);
 t_element		ft_get_columns(t_element element, int height, int width);
-t_element		*ft_gen_map(t_element *element);
+void			ft_gen_map(mlx_t *mlx, t_element *element);
 t_element		*ft_gen_player(t_element *element);
 
 //solve.c
@@ -90,10 +94,10 @@ int				ft_check_if_reachable(t_element element, int y,
 char			**ft_cpy_map(t_element element, char **map);
 
 //textures_to_window.c
-t_element		ft_valere(int height, int width, t_element *element);
-t_element		ft_collectible(int height, int width, t_element *element);
-t_element		ft_exit(int height, int width, t_element *element);
-t_element		ft_enemy(int height, int width, t_element *element);
+void			ft_valere(mlx_t *mlx, int height, int width, t_element *element);
+void			ft_collectible(mlx_t *mlx, int height, int width, t_element *element);
+void			ft_exit(mlx_t *mlx, int height, int width, t_element *element);
+void			ft_enemy(mlx_t *mlx, int height, int width, t_element *element);
 void			ft_open_exit(t_element *element);
 
 //valere_move.c
@@ -108,6 +112,7 @@ void			ft_verify_map(char **map, t_element *element);
 void			ft_check_items(t_element *element);
 void			ft_verify_counts(t_element *element);
 void			ft_count_column(t_element *element);
+void			ft_exit_game(t_element *element);
 
 
 //wall_and_floor.c

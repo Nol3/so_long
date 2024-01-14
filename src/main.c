@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:32:45 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/10 19:53:04 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:57:13 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ int32_t	main(int argc, char **argv)
 		{
 			*element = ft_init_elements(*element);
 			ft_read_map(argv[1], element->full_map, element->map_cpy);
+			ft_validate_map(element);
 			printf("element->full_map[0] = %s\n", element->full_map[0]);
-			printf("element->map_cpy[0] = %s\n", element->map_cpy[0]);
 			if ((ft_check_map(element->map_cpy) == 0
 					&& ft_check_min_items(element->map_cpy) == 0))
 				return (0);
 			*element = ft_get_height_width(*element, element->map_cpy);
-			ft_printf("element->width = %d\n", element->width);
 			element->mlx = mlx_init(element->width, element->height,
 					"so_long", false);
 			ft_load_textures(element);

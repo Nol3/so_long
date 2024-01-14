@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 05:41:43 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/12 17:24:20 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 18:01:52 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	ft_create_window(t_element *element)
 {
-	element = ft_gen_map(element);
-
-
-
+	ft_gen_map(element);
+	mlx_key_hook(element->mlx, (mlx_keyfunc)ft_movement, game);
 	mlx_close_hook(element->mlx, ft_close_window, element);
-	mlx_key_hook(element->mlx, ft_movement, element);
+	//mlx_key_hook(element->mlx, ft_movement, element);
 	//ft_printf("element.player.count = %d\n", element->player->count);
 	mlx_loop(element->mlx);
+	mlx_terminate(element->mlx);
+	ft_free_game(element);
 	return (EXIT_SUCCESS);
 }
 
@@ -31,6 +31,6 @@ void	ft_close_window(void *element)
 
 	ptr = element;
 	free(ptr->chest);
-	ptr->full_map = ft_free(ptr->full_map);
+	ft_free_full_map(ptr);
 	mlx_close_window(ptr->mlx);
 }

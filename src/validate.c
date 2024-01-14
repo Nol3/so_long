@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:25:21 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/12 18:00:19 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:54:25 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,10 @@ void	ft_count_column(t_element *element)
 		i++;
 	}
 	element->width = tmp;
+}
+
+void	ft_exit_game(t_element *element)
+{
+	ft_printf("Terminas con %d movimientos.", element->steps);
+	ft_free_game(element);
 }

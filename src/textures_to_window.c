@@ -6,46 +6,44 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 06:02:30 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/10 19:34:13 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:55:37 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_element	ft_valere(int height, int width, t_element *element)
+void	ft_valere(mlx_t *mlx, int height, int width, t_element *element)
 {
-	mlx_image_to_window(element->mlx, element->floor,
+	mlx_image_to_window(mlx, element->floor,
 		width * 64, height * 64);
-	mlx_image_to_window(element->mlx, element->player,
+	mlx_image_to_window(mlx, element->player,
 		width * 64, height * 64);
-	return (*element);
+	element->player_pos_x = width;
+	element->player_pos_y = height;
 }
 
-t_element	ft_exit(int height, int width, t_element *element)
+void	ft_exit(mlx_t *mlx, int height, int width, t_element *element)
 {
-	mlx_image_to_window(element->mlx, element->floor,
+	mlx_image_to_window(mlx, element->floor,
 		width * 64, height * 64);
-	mlx_image_to_window(element->mlx, element->exit,
+	mlx_image_to_window(mlx, element->exit,
 		width * 64, height * 64);
-	return (*element);
 }
 
-t_element	ft_enemy(int height, int width, t_element *element)
+void	ft_enemy(mlx_t *mlx, int height, int width, t_element *element)
 {
-	mlx_image_to_window(element->mlx, element->floor,
+	mlx_image_to_window(mlx, element->floor,
 		width * 64, height * 64);
-	mlx_image_to_window(element->mlx, element->enemy,
+	mlx_image_to_window(mlx, element->enemy,
 		width * 64, height * 64);
-	return (*element);
 }
 
-t_element	ft_collectible(int height, int width, t_element *element)
+void	ft_collectible(mlx_t *mlx, int height, int width, t_element *element)
 {
-	mlx_image_to_window(element->mlx, element->floor,
+	mlx_image_to_window(mlx, element->floor,
 		width * 64, height * 64);
-	mlx_image_to_window(element->mlx, element->chest,
+	mlx_image_to_window(mlx, element->chest,
 		width * 64, height * 64);
-	return (*element);
 }
 
 void	ft_open_exit(t_element *element)
