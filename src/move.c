@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move2.c                                            :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:24:09 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/14 22:28:55 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:26:40 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,26 @@ void	ft_movement(mlx_key_data_t paramkey, t_element *element)
 		ft_free_game(element);
 }
 
-/*Funtion to move player up, count collectibles and way to win*/
 void	ft_movement_up(t_element *element)
 {
-	if (element->full_map[element->player_pos_x - 1][element->player_pos_y] != '1'
-		&& (element->full_map[element->player_pos_x - 1][element->player_pos_y] != 'E'
-		|| element->chest_counter == 0))
+	if (element->full_map[element->player_pos_x - 1]
+		[element->player_pos_y] != '1'
+		&& (element->full_map[element->player_pos_x - 1]
+			[element->player_pos_y] != 'E'
+			|| element->chest_counter == 0))
 	{
 		element->full_map[element->player_pos_x][element->player_pos_y] = '0';
-		if (element->full_map[element->player_pos_x - 1][element->player_pos_y] == 'C')
+		if (element->full_map[element->player_pos_x - 1]
+			[element->player_pos_y] == 'C')
 			element->chest_counter--;
-		if (element->full_map[element->player_pos_x - 1][element->player_pos_y] == 'E'
+		if (element->full_map[element->player_pos_x - 1]
+			[element->player_pos_y] == 'E'
 			&& element->chest_counter == 0)
 			ft_exit_game(element);
 		else
 		{
-			element->full_map[element->player_pos_x - 1][element->player_pos_y] = 'P';
+			element->full_map[element->player_pos_x - 1]
+			[element->player_pos_y] = 'P';
 			ft_gen_map(element->mlx, element);
 			element->steps++;
 			ft_printf("\nMoves: %d", element->steps);
@@ -54,22 +58,26 @@ void	ft_movement_up(t_element *element)
 	}
 }
 
-/*Funtion to move player down, count collectibles and way to win*/
 void	ft_movement_down(t_element *element)
 {
-	if (element->full_map[element->player_pos_x + 1][element->player_pos_y] != '1'
-		&& (element->full_map[element->player_pos_x + 1][element->player_pos_y] != 'E'
-		|| element->chest_counter == 0))
+	if (element->full_map[element->player_pos_x + 1]
+		[element->player_pos_y] != '1'
+		&& (element->full_map[element->player_pos_x + 1]
+			[element->player_pos_y] != 'E'
+			|| element->chest_counter == 0))
 	{
 		element->full_map[element->player_pos_x][element->player_pos_y] = '0';
-		if (element->full_map[element->player_pos_x + 1][element->player_pos_y] == 'C')
+		if (element->full_map[element->player_pos_x + 1]
+			[element->player_pos_y] == 'C')
 			element->chest_counter--;
-		if (element->full_map[element->player_pos_x + 1][element->player_pos_y] == 'E'
+		if (element->full_map[element->player_pos_x + 1]
+			[element->player_pos_y] == 'E'
 			&& element->chest_counter == 0)
 			ft_exit_game(element);
 		else
 		{
-			element->full_map[element->player_pos_x + 1][element->player_pos_y] = 'P';
+			element->full_map[element->player_pos_x + 1]
+			[element->player_pos_y] = 'P';
 			ft_gen_map(element->mlx, element);
 			element->steps++;
 			ft_printf("\nMoves: %d", element->steps);
@@ -77,22 +85,26 @@ void	ft_movement_down(t_element *element)
 	}
 }
 
-/*Funtion to move player left, count collectibles and way to win*/
 void	ft_movement_left(t_element *element)
 {
-	if (element->full_map[element->player_pos_x][element->player_pos_y - 1] != '1'
-		&& (element->full_map[element->player_pos_x][element->player_pos_y - 1] != 'E'
-		|| element->chest_counter == 0))
+	if (element->full_map[element->player_pos_x]
+		[element->player_pos_y - 1] != '1'
+		&& (element->full_map[element->player_pos_x]
+			[element->player_pos_y - 1] != 'E'
+			|| element->chest_counter == 0))
 	{
 		element->full_map[element->player_pos_x][element->player_pos_y] = '0';
-		if (element->full_map[element->player_pos_x][element->player_pos_y - 1] == 'C')
+		if (element->full_map[element->player_pos_x]
+			[element->player_pos_y - 1] == 'C')
 			element->chest_counter--;
-		if (element->full_map[element->player_pos_x][element->player_pos_y - 1] == 'E'
+		if (element->full_map[element->player_pos_x]
+			[element->player_pos_y - 1] == 'E'
 			&& element->chest_counter == 0)
 			ft_exit_game(element);
 		else
 		{
-			element->full_map[element->player_pos_x][element->player_pos_y - 1] = 'P';
+			element->full_map[element->player_pos_x]
+			[element->player_pos_y - 1] = 'P';
 			ft_gen_map(element->mlx, element);
 			element->steps++;
 			ft_printf("\nMoves: %d", element->steps);
@@ -100,22 +112,26 @@ void	ft_movement_left(t_element *element)
 	}
 }
 
-/*Funtion to move player right, count collectibles and way to win*/
 void	ft_movement_right(t_element *element)
 {
-	if (element->full_map[element->player_pos_x][element->player_pos_y + 1] != '1'
-		&& (element->full_map[element->player_pos_x][element->player_pos_y + 1] != 'E'
-		|| element->chest_counter == 0))
+	if (element->full_map[element->player_pos_x]
+		[element->player_pos_y + 1] != '1'
+		&& (element->full_map[element->player_pos_x]
+			[element->player_pos_y + 1] != 'E'
+			|| element->chest_counter == 0))
 	{
 		element->full_map[element->player_pos_x][element->player_pos_y] = '0';
-		if (element->full_map[element->player_pos_x][element->player_pos_y + 1] == 'C')
+		if (element->full_map[element->player_pos_x]
+			[element->player_pos_y + 1] == 'C')
 			element->chest_counter--;
-		if (element->full_map[element->player_pos_x][element->player_pos_y + 1] == 'E'
+		if (element->full_map[element->player_pos_x]
+			[element->player_pos_y + 1] == 'E'
 			&& element->chest_counter == 0)
 			ft_exit_game(element);
 		else
 		{
-			element->full_map[element->player_pos_x][element->player_pos_y + 1] = 'P';
+			element->full_map[element->player_pos_x]
+			[element->player_pos_y + 1] = 'P';
 			ft_gen_map(element->mlx, element);
 			element->steps++;
 			ft_printf("\nMoves: %d", element->steps);

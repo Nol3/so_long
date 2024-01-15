@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:25:21 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/14 17:54:25 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:00:31 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_verify_map(char **map, t_element *element)
 		x = -1;
 		while (map[i][++x])
 		{
-			if ((i == 0 || i == element->width - 1)
-				|| (x == 0 || x == element->height - 1))
+			if ((i == 0 || i == element->height - 1)
+				|| (x == 0 || x == element->width - 1))
 				if (map[i][x] != '1')
 					perror("Map is not closed");
 		}
@@ -50,9 +50,9 @@ void	ft_check_items(t_element *element)
 		{
 			if (element->full_map[y][x] == 'P')
 				element->count_player++;
-			if (element->map[y][x] == 'C')
+			if (element->full_map[y][x] == 'C')
 				element->max_chest++;
-			if (element->map[y][x] == 'E')
+			if (element->full_map[y][x] == 'E')
 				element->count_exit++;
 			x++;
 		}
@@ -70,7 +70,7 @@ void	ft_verify_counts(t_element *element)
 		free(element);
 		perror("Error with player or exit");
 	}
-	if (element->count_collect < 1)
+	if (element->max_chest < 1)
 	{
 		free(element);
 		perror("There are no chests!");
@@ -93,7 +93,7 @@ void	ft_count_column(t_element *element)
 		tmp = ft_strlen(element->full_map[i]);
 		if (count_line != tmp)
 		{
-			free_map(element);
+			ft_free_full_map(element);
 			perror("Column size error");
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/14 22:32:35 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:52:55 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <memory.h>
-
-# define BUFFER_SIZE 512
-// # define WIDTH 512
-// # define HEIGHT 512
 
 typedef struct s_element
 {
@@ -48,62 +44,52 @@ typedef struct s_element
 
 //create.c
 int				ft_create_window(t_element *element);
-t_element		ft_init_window(t_element element);
-void			ft_close_window(void *element);
+void			ft_close_window(void *param);
 
 //init.c
-void		ft_init_elements(t_element elements);
-void		ft_validate_map(t_element *element);
-
-//prefab.c
-void			ft_get_wall_img(t_element *mlx);
-void			ft_get_floor_img(t_element *mlx);
-void			ft_get_chest_img(t_element *mlx);
-void			ft_get_player_img(t_element *mlx);
-void			ft_get_exit_img(t_element *mlx);
+void			ft_init_elements(t_element *elements);
+void			ft_validate_map(t_element *element);
 
 //map_check.c
 int				ft_check_extension(const char *file_name);
-// int				ft_check_map(char **map);
-// int				ft_check_min_items(char **map);
 
 //map_load.c
-void	ft_read_map(char *file, char **full_map, char **map_cpy);
-//char			**ft_create_map(char *map_load, int height, int width);
-void		ft_get_height_width(t_element elements, char **map_load);
+char			*ft_read_map(char *file);
+void			ft_load_map(char *file, t_element *element);
+void			ft_get_height_width(t_element *elements, char **map_load);
+void			ft_gen_map(mlx_t *mlx, t_element *element);
 
 //move.c
-void	ft_movement(mlx_key_data_t paramkey, t_element *element);
-void	ft_movement_up(t_element *element);
-void	ft_movement_down(t_element *element);
-void	ft_movement_left(t_element *element);
-void	ft_movement_right(t_element *element);
+void			ft_movement(mlx_key_data_t paramkey, t_element *element);
+void			ft_movement_up(t_element *element);
+void			ft_movement_down(t_element *element);
+void			ft_movement_left(t_element *element);
+void			ft_movement_right(t_element *element);
 
 //outs.c
 void			ft_free_game(t_element *element);
 void			ft_free_full_map(t_element *element);
 
 //png_to_textures.c
-t_element		ft_chest_texture(t_element element);
-t_element		*ft_alloc_chest(t_element *element);
-void		*ft_load_textures(t_element *element);
-t_element		ft_alloc_columns(t_element element);
-t_element		ft_get_columns(t_element element, int height, int width);
-void			ft_gen_map(mlx_t *mlx, t_element *element);
-t_element		*ft_gen_player(t_element *element);
+void			ft_load_textures(t_element *element);
 
 //solve.c
-void		flood_fill(t_element *element, int player_pos_x, int player_pos_y);
-void		ft_to_fill(t_element *element, int player_pos_x, int player_pos_y);
-void		ft_player_position(t_element *element, int *pl_width, int *pl_height);
-void		ft_verify_win(t_element *element);
+void			ft_verify_win(t_element *element);
+void			ft_player_position(t_element *element,
+					int *pl_width, int *pl_height);
+void			ft_to_fill(t_element *element,
+					int player_pos_x, int player_pos_y);
+void			flood_fill(t_element *element,
+					int player_pos_x, int player_pos_y);
 
 //textures_to_window.c
-void			ft_valere(mlx_t *mlx, int height, int width, t_element *element);
-void			ft_collectible(mlx_t *mlx, int height, int width, t_element *element);
+void			ft_valere(mlx_t *mlx, int height,
+					int width, t_element *element);
 void			ft_exit(mlx_t *mlx, int height, int width, t_element *element);
 void			ft_enemy(mlx_t *mlx, int height, int width, t_element *element);
-void			ft_open_exit(t_element *element);
+void			ft_collectible(mlx_t *mlx, int height,
+					int width, t_element *element);
+//void			ft_open_exit(t_element *element);
 
 //valere_move.c
 // void			ft_movement(mlx_key_data_t keydata, void *data);
@@ -119,9 +105,7 @@ void			ft_verify_counts(t_element *element);
 void			ft_count_column(t_element *element);
 void			ft_exit_game(t_element *element);
 
-
 //wall_and_floor.c
-void			*ft_wall(int height, int width, t_element *element);
-void			*ft_floor(int height, int width, t_element *element);
-
+void			ft_wall(mlx_t *mlx, int height, int width, t_element *element);
+void			ft_floor(mlx_t *mlx, int height, int width, t_element *element);
 #endif

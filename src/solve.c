@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:44:42 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/14 22:36:38 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:20:26 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ void	ft_to_fill(t_element *element, int player_pos_x, int player_pos_y)
 void	flood_fill(t_element *element, int player_pos_x, int player_pos_y)
 {
 	if (player_pos_x < 0 || player_pos_y < 0 || player_pos_x >= element->height
-		|| player_pos_y >= element->pl_width || element->map_cpy[player_pos_x][player_pos_y] == '1'
-			|| element->map_cpy[player_pos_x][player_pos_y] == 'X')
+		|| player_pos_y >= element->width
+		|| element->map_cpy[player_pos_x][player_pos_y] == '1'
+				|| element->map_cpy[player_pos_x][player_pos_y] == 'X')
 		return ;
 	if (((element->map_cpy[player_pos_x + 1][player_pos_y] == 'E')
 		|| (element->map_cpy[player_pos_x - 1][player_pos_y] == 'E'))

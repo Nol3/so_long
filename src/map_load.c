@@ -6,41 +6,76 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/14 22:20:42 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:54:05 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	ft_read_map(char *file, t_element *element)
+// void	ft_read_map(char *file, t_element *element)
+// {
+// 	int		fd;
+// 	char	*temp;
+// 	char	*big_str;
+// 	char	*str;
+
+// 	fd = open(file, O_RDONLY);
+// 	big_str = malloc(sizeof(char) * 2);
+// 	if (fd == -1)
+// 		perror("File error or empty");
+// 	str = get_next_line(fd);
+// 	if (!str)
+// 		perror("Empty file");
+// 	while (str != NULL && str[0] != '\0')
+// 	{
+// 		temp = ft_strjoin(big_str, str);
+// 		free(big_str);
+// 		big_str = temp;
+// 		free(str);
+// 		str = get_next_line(fd);
+// 	}
+// 	free(str);
+// 	free(temp);
+// 	close(fd);
+// 	element->full_map = ft_split(big_str, '\n');
+// 	element->map_cpy = ft_split(big_str, '\n');
+// }
+
+char	*ft_read_map(char *file)
 {
 	int		fd;
-	char	*temp;
-	char	*big_str;
-	char	*str;
+	int		fsize;
+	char	*buff;
+	char	*file_read;
 
+	fsize = 0;
+	buff = malloc(sizeof(char) * 2);
 	fd = open(file, O_RDONLY);
-	big_str = malloc(sizeof(char) * 2);
-	if (fd == -1)
-		perror("File error or empty");
-	str = get_next_line(fd);
-	if (!str)
-		perror("Empty file");
-	while (str != NULL && str[0] != '\0')
-	{
-		temp = ft_strjoin(big_str, str);
-		free(big_str);
-		big_str = temp;
-		free(str);
-		str = get_next_line(fd);
-	}
-	free(str);
-	free(temp);
+	while (read(fd, buff, 1) == 1)
+		fsize++;
+	free(buff);
+	if (fsize == 0)
+		perror("Empty map");
 	close(fd);
-	element->full_map = ft_split(big_str, '\n');
-	element->map_cpy = ft_split(big_str, '\n');
+	fd = open(file, O_RDONLY);
+	file_read = malloc(sizeof(char) * fsize + 1);
+	read(fd, file_read, fsize);
+	file_read[fsize] = '\0';
+	close(fd);
+	return (file_read);
 }
 
+void	ft_load_map(char *file, t_element *element)
+{
+	char	*file_read;
+	char	**map_load;
+
+	file_read = ft_read_map(file);
+	map_load = ft_split(file_read, '\n');
+	element->full_map = ft_split(file_read, '\n');
+	element->map_cpy = ft_split(file_read, '\n');
+	free(file_read);
+}
 
 void	ft_get_height_width(t_element *element, char **map_load)
 {
@@ -71,15 +106,15 @@ void	ft_gen_map(mlx_t *mlx, t_element *element)
 		while (element->full_map[i][j])
 		{
 			if (element->full_map[i][j] == '1')
-				ft_wall(i, j, element);
+				ft_wall(mlx, i, j, element);
 			else if (element->full_map[i][j] == '0')
-				ft_floor(i, j, element);
+				ft_floor(mlx, i, j, element);
 			else if (element->full_map[i][j] == 'C')
-				ft_collectible(i, j, element);
-			else if (element.full_map[i][j] == 'E')
-				ft_exit(i, j, element);
+				ft_collectible(mlx, i, j, element);
+			else if (element->full_map[i][j] == 'E')
+				ft_exit(mlx, i, j, element);
 			else if (element->full_map[i][j] == 'P')
-				ft_valere(i, j, element);
+				ft_valere(mlx, i, j, element);
 			j++;
 		}
 		i++;
