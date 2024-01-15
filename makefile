@@ -16,6 +16,7 @@ SRCS	=	./src/main.c \
 			./src/wall_and_floor.c \
 			./src/validate.c \
 			./src/move.c \
+			./src/valere_move.c
 
 OBJS	= ${SRCS:.c=.o}
 

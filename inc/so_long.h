@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 13:52:55 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:09:53 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int				ft_check_extension(const char *file_name);
 char			*ft_read_map(char *file);
 void			ft_load_map(char *file, t_element *element);
 void			ft_get_height_width(t_element *elements, char **map_load);
-void			ft_gen_map(mlx_t *mlx, t_element *element);
+t_element		*ft_gen_map(mlx_t *mlx, t_element *element);
+t_element		*ft_gen_player(mlx_t *mlx, t_element *element);
 
 //move.c
 void			ft_movement(mlx_key_data_t paramkey, t_element *element);
@@ -89,14 +90,14 @@ void			ft_exit(mlx_t *mlx, int height, int width, t_element *element);
 void			ft_enemy(mlx_t *mlx, int height, int width, t_element *element);
 void			ft_collectible(mlx_t *mlx, int height,
 					int width, t_element *element);
-//void			ft_open_exit(t_element *element);
+void			ft_open_exit(t_element *element);
 
 //valere_move.c
-// void			ft_movement(mlx_key_data_t keydata, void *data);
-// int				ft_next_pos(int32_t height, int32_t width,
-// 					char key, char **map);
-// void			ft_add_step(t_element *element_ptr, int32_t *posx,
-// 					int32_t *posy, char key);
+void			ft_valere_movement(mlx_key_data_t keydata, void *data);
+int				ft_next_pos(int32_t height, int32_t width,
+					char key, char **map);
+void			ft_add_step(t_element *element_ptr, int32_t *posx,
+					int32_t *posy, char key);
 
 //validate.c
 void			ft_verify_map(char **map, t_element *element);

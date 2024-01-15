@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 13:54:05 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:11:31 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	ft_get_height_width(t_element *element, char **map_load)
 	element->width = j;
 }
 
-void	ft_gen_map(mlx_t *mlx, t_element *element)
+t_element	*ft_gen_map(mlx_t *mlx, t_element *element)
 {
 	int	i;
 	int	j;
@@ -119,7 +119,33 @@ void	ft_gen_map(mlx_t *mlx, t_element *element)
 		}
 		i++;
 	}
+	//element = ft_gen_player(mlx, element);
+	return (element);
 }
+
+// t_element	*ft_gen_player(mlx_t *mlx, t_element *element)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (element->full_map[i])
+// 	{
+// 		j = 0;
+// 		while (element->full_map[i][j])
+// 		{
+// 			if (element->full_map[i][j] == 'P')
+// 			{
+// 				ft_valere(mlx, i, j, element);
+// 				element->player_pos_x = j;
+// 				element->player_pos_y = i;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (element);
+// }
 
 // t_element	ft_gen_map_enemy(t_element element)
 // {
@@ -152,26 +178,3 @@ void	ft_gen_map(mlx_t *mlx, t_element *element)
 // 	}
 // }
 
-// t_element	*ft_gen_player(t_element *element)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (element->full_map[i])
-// 	{
-// 		j = 0;
-// 		while (element->full_map[i][j])
-// 		{
-// 			if (element->full_map[i][j] == 'P')
-// 			{
-// 				*element = ft_valere(i, j, element);
-// 				element->player_pos_x = j;
-// 				element->player_pos_y = i;
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (element);
-// }
