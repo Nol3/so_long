@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:24:09 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 16:32:15 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:05:01 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,24 @@ void	ft_movement(mlx_key_data_t paramkey, t_element *element)
 
 void	ft_movement_up(t_element *element)
 {
-	if (element->full_map[element->player_pos_x - 1]
-		[element->player_pos_y] != '1'
-		&& (element->full_map[element->player_pos_x - 1]
-			[element->player_pos_y] != 'E'
-			|| element->chest_counter == 0))
+	if (element->full_map[element->move_x - 1]
+		[element->move_y] != '1'
+		&& (element->full_map[element->move_x - 1]
+			[element->move_y] != 'E'
+			|| element->max_chest == 0))
 	{
-		element->full_map[element->player_pos_x][element->player_pos_y] = '0';
-		if (element->full_map[element->player_pos_x - 1]
-			[element->player_pos_y] == 'C')
-			element->chest_counter--;
-		if (element->full_map[element->player_pos_x - 1]
-			[element->player_pos_y] == 'E'
-			&& element->chest_counter == 0)
+		element->full_map[element->move_x][element->move_y] = '0';
+		if (element->full_map[element->move_x - 1]
+			[element->move_y] == 'C')
+			element->max_chest--;
+		if (element->full_map[element->move_x - 1]
+			[element->move_y] == 'E'
+			&& element->max_chest == 0)
 			ft_exit_game(element);
 		else
 		{
-			element->full_map[element->player_pos_x - 1]
-			[element->player_pos_y] = 'P';
+			element->full_map[element->move_x - 1]
+			[element->move_y] = 'P';
 			ft_gen_map(element->mlx, element);
 			element->steps++;
 			ft_printf("\nMoves: %d", element->steps);
@@ -60,24 +60,24 @@ void	ft_movement_up(t_element *element)
 
 void	ft_movement_down(t_element *element)
 {
-	if (element->full_map[element->player_pos_x + 1]
-		[element->player_pos_y] != '1'
-		&& (element->full_map[element->player_pos_x + 1]
-			[element->player_pos_y] != 'E'
-			|| element->chest_counter == 0))
+	if (element->full_map[element->move_x + 1]
+		[element->move_y] != '1'
+		&& (element->full_map[element->move_x + 1]
+			[element->move_y] != 'E'
+			|| element->max_chest == 0))
 	{
-		element->full_map[element->player_pos_x][element->player_pos_y] = '0';
-		if (element->full_map[element->player_pos_x + 1]
-			[element->player_pos_y] == 'C')
-			element->chest_counter--;
-		if (element->full_map[element->player_pos_x + 1]
-			[element->player_pos_y] == 'E'
-			&& element->chest_counter == 0)
+		element->full_map[element->move_x][element->move_y] = '0';
+		if (element->full_map[element->move_x + 1]
+			[element->move_y] == 'C')
+			element->max_chest--;
+		if (element->full_map[element->move_x + 1]
+			[element->move_y] == 'E'
+			&& element->max_chest == 0)
 			ft_exit_game(element);
 		else
 		{
-			element->full_map[element->player_pos_x + 1]
-			[element->player_pos_y] = 'P';
+			element->full_map[element->move_x + 1]
+			[element->move_y] = 'P';
 			ft_gen_map(element->mlx, element);
 			element->steps++;
 			ft_printf("\nMoves: %d", element->steps);
@@ -87,24 +87,24 @@ void	ft_movement_down(t_element *element)
 
 void	ft_movement_left(t_element *element)
 {
-	if (element->full_map[element->player_pos_x]
-		[element->player_pos_y - 1] != '1'
-		&& (element->full_map[element->player_pos_x]
-			[element->player_pos_y - 1] != 'E'
-			|| element->chest_counter == 0))
+	if (element->full_map[element->move_x]
+		[element->move_y - 1] != '1'
+		&& (element->full_map[element->move_x]
+			[element->move_y - 1] != 'E'
+			|| element->max_chest == 0))
 	{
-		element->full_map[element->player_pos_x][element->player_pos_y] = '0';
-		if (element->full_map[element->player_pos_x]
-			[element->player_pos_y - 1] == 'C')
-			element->chest_counter--;
-		if (element->full_map[element->player_pos_x]
-			[element->player_pos_y - 1] == 'E'
-			&& element->chest_counter == 0)
+		element->full_map[element->move_x][element->move_y] = '0';
+		if (element->full_map[element->move_x]
+			[element->move_y - 1] == 'C')
+			element->max_chest--;
+		if (element->full_map[element->move_x]
+			[element->move_y - 1] == 'E'
+			&& element->max_chest == 0)
 			ft_exit_game(element);
 		else
 		{
-			element->full_map[element->player_pos_x]
-			[element->player_pos_y - 1] = 'P';
+			element->full_map[element->move_x]
+			[element->move_y - 1] = 'P';
 			ft_gen_map(element->mlx, element);
 			element->steps++;
 			ft_printf("\nMoves: %d", element->steps);
@@ -114,24 +114,24 @@ void	ft_movement_left(t_element *element)
 
 void	ft_movement_right(t_element *element)
 {
-	if (element->full_map[element->player_pos_x]
-		[element->player_pos_y + 1] != '1'
-		&& (element->full_map[element->player_pos_x]
-			[element->player_pos_y + 1] != 'E'
-			|| element->chest_counter == 0))
+	if (element->full_map[element->move_x]
+		[element->move_y + 1] != '1'
+		&& (element->full_map[element->move_x]
+			[element->move_y + 1] != 'E'
+			|| element->max_chest == 0))
 	{
-		element->full_map[element->player_pos_x][element->player_pos_y] = '0';
-		if (element->full_map[element->player_pos_x]
-			[element->player_pos_y + 1] == 'C')
-			element->chest_counter--;
-		if (element->full_map[element->player_pos_x]
-			[element->player_pos_y + 1] == 'E'
-			&& element->chest_counter == 0)
+		element->full_map[element->move_x][element->move_y] = '0';
+		if (element->full_map[element->move_x]
+			[element->move_y + 1] == 'C')
+			element->max_chest--;
+		if (element->full_map[element->move_x]
+			[element->move_y + 1] == 'E'
+			&& element->max_chest == 0)
 			ft_exit_game(element);
 		else
 		{
-			element->full_map[element->player_pos_x]
-			[element->player_pos_y + 1] = 'P';
+			element->full_map[element->move_x]
+			[element->move_y + 1] = 'P';
 			ft_gen_map(element->mlx, element);
 			element->steps++;
 			ft_printf("\nMoves: %d", element->steps);

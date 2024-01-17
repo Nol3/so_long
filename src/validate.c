@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:25:21 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 14:00:31 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:04:30 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ void	ft_count_column(t_element *element)
 
 void	ft_exit_game(t_element *element)
 {
-	ft_printf("Terminas con %d movimientos.", element->steps);
+	ft_printf("\nTerminas con %d movimientos.", element->steps);
 	ft_free_game(element);
 }

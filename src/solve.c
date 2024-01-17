@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:44:42 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 16:02:04 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:01:05 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_verify_win(t_element *element)
 	int		pl_height;
 	int		map_width;
 	int		map_height;
+	int		found;
 
 	pl_height = 0;
 	pl_width = 0;
@@ -31,11 +32,13 @@ void	ft_verify_win(t_element *element)
 		{
 			if (element->map_cpy[map_width][map_height] == 'C'
 				|| element->map_cpy[map_width][map_height] == 'E')
-				ft_printf("There is a way to win");
+				found = 1;
 			map_height++;
 		}
 		map_width++;
 	}
+	if (!found)
+		ft_printf("No hay salida!\n");
 }
 
 /*Para conocer la posición de P*/

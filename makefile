@@ -1,5 +1,5 @@
 NAME = so_long
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra
 MLX42 = MLX42/libmlx42.a
 LIBFT = include/bin/libft.a
 LIBS = -ldl -lglfw3 -pthread -lm $(MLX42)/libmlx42.a
@@ -23,6 +23,7 @@ OBJS	= ${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX42) $(OBJS)
+	# @gcc $(FLAGS) $(OBJS) $(MLX42) $(LIBFT) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
 	@gcc $(FLAGS) $(OBJS) $(MLX42) $(LIBFT) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L "/Users/alcarden/.brew/opt/glfw/lib/" -o $(NAME)
 
 src/%.o : src/%.c

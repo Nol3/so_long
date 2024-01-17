@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 17:09:53 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:39:19 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_element
 	mlx_image_t		*chest;
 	int				player_pos_x;
 	int				player_pos_y;
+	int				move_x;
+	int				move_y;
 	int				max_chest;
 	int				chest_counter;
 	int				count_player;

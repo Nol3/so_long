@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 05:41:43 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 17:10:04 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:50:41 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_create_window(t_element *element)
 {
 	ft_printf("width: %d, height: %d\n", element->width, element->height);
 	element = ft_gen_map(element->mlx, element);
-	mlx_key_hook(element->mlx, (mlx_keyfunc)ft_valere_movement, element);
+	mlx_key_hook(element->mlx, (mlx_keyfunc)ft_movement, element);
 	mlx_close_hook(element->mlx, ft_close_window, element);
 	mlx_loop(element->mlx);
 	mlx_terminate(element->mlx);

@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:18:38 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 12:03:46 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:40:39 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_init_elements(t_element *element)
 	element->steps = 0;
 	element->count_player = 0;
 	element->count_exit = 0;
+	element->move_x = 0;
+	element->move_y = 0;
 }
 
 void	ft_validate_map(t_element *element)
