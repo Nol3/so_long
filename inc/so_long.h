@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/17 13:39:19 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:04:41 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,14 @@ typedef struct s_element
 	int				steps;
 	int				width;
 	int				height;
+	int				idle_timer;
+	int				is_idle;
 	char			**full_map;
 	char			**map_cpy;
 }	t_element;
+
+//añadir mlx_image_t para el Idle de Valere
+//(6 imagenes) y meterlos en el init.
 
 //create.c
 int				ft_create_window(t_element *element);

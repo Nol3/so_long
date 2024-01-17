@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 05:41:43 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/17 13:50:41 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:31:52 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int	ft_create_window(t_element *element)
 	mlx_key_hook(element->mlx, (mlx_keyfunc)ft_movement, element);
 	mlx_close_hook(element->mlx, ft_close_window, element);
 	mlx_loop(element->mlx);
+	while (mlx_loop(element->mlx)
+	{
+		/* code */
+	}
 	mlx_terminate(element->mlx);
 	ft_free_game(element);
 	return (EXIT_SUCCESS);
