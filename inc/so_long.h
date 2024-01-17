@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/17 18:04:41 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:03:06 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_element
 //create.c
 int				ft_create_window(t_element *element);
 void			ft_close_window(void *param);
+mlx_image_t		*ft_put_steps(t_element *element);
 
 //init.c
 void			ft_init_elements(t_element *elements);
