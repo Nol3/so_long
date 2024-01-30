@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/30 19:48:43 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/30 20:57:28 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ typedef struct s_element
 	int				is_idle;
 	char			**full_map;
 	char			**map_cpy;
+	mlx_image_t		*valere1;
+	mlx_image_t		*valere2;
+	mlx_image_t		*valere3;
+	mlx_image_t		*valere;
 }	t_element;
 
 //añadir mlx_image_t para el Idle de Valere
@@ -101,11 +105,8 @@ void			ft_collectible(mlx_t *mlx, int height,
 void			ft_open_exit(t_element *element);
 
 //valere_move.c
-void			ft_valere_movement(mlx_key_data_t keydata, void *data);
-int				ft_next_pos(int32_t height, int32_t width,
-					char key, char **map);
-void			ft_add_step(t_element *element_ptr, int32_t *posx,
-					int32_t *posy, char key);
+int				ft_valere_idle(t_element *element);
+void			ft_valere_load(t_element *element);
 
 //validate.c
 void			ft_verify_map(char **map, t_element *element);

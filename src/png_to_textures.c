@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:57:21 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/17 20:23:43 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/30 21:07:10 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	ft_load_textures(t_element *element)
 	texture = mlx_load_png("./textures/chest.png");
 	element->chest = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
+	ft_valere_load(element);
 }

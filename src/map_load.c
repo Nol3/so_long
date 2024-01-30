@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/17 18:06:01 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/30 20:55:04 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,3 @@ t_element	*ft_gen_map(mlx_t *mlx, t_element *element)
 	}
 	return (element);
 }
-
-void ft_valere_idle(mlx_t *mlx, t_element *element)
-{
-	if (element->is_idle == 0)
-	{
-		element->is_idle = 1;
-		element->idle_timer = 0;
-	}
-	else
-	{
-		element->is_idle = 0;
-		element->idle_timer = 0;
-	}
-}
-
