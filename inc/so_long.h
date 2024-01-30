@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/17 21:03:06 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:48:43 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void			ft_player_position(t_element *element,
 					int *pl_width, int *pl_height);
 void			ft_to_fill(t_element *element,
 					int player_pos_x, int player_pos_y);
-void			flood_fill(t_element *element,
-					int player_pos_x, int player_pos_y);
+void			flood_fill(t_element *element, int player_pos_x,
+					int player_pos_y, int *trues);
 
 //textures_to_window.c
 void			ft_valere(mlx_t *mlx, int height,

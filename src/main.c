@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:32:45 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/17 18:06:39 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/30 20:04:34 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int32_t	main(int argc, char **argv)
 			ft_load_map(argv[1], element);
 			ft_get_height_width(element, element->map_cpy);
 			ft_validate_map(element);
-			ft_verify_map(element->full_map, element);
 			element->mlx = mlx_init(element->width * 64, element->height * 64,
 					"so_long", false);
 			ft_load_textures(element);
+			ft_verify_map(element->full_map, element);
 			ft_create_window(element);
 		}
 		else

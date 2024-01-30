@@ -1,5 +1,5 @@
 NAME = so_long
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -g
 MLX42 = MLX42/libmlx42.a
 LIBFT = include/bin/libft.a
 LIBS = -ldl -lglfw3 -pthread -lm $(MLX42)/libmlx42.a

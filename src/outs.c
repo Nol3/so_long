@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:17:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/15 11:20:21 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/30 20:01:22 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_free_game(t_element *element)
 	mlx_delete_image(element->mlx, element->player);
 	mlx_delete_image(element->mlx, element->exit);
 	free(element->full_map);
+	free(element->map_cpy);
 	mlx_close_window(element->mlx);
 	exit(EXIT_SUCCESS);
 }
