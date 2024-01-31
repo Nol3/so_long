@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/30 20:57:28 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/01/31 12:43:31 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void			ft_open_exit(t_element *element);
 //valere_move.c
 int				ft_valere_idle(t_element *element);
 void			ft_valere_load(t_element *element);
+void			ft_player_position_animation(t_element *element);
 
 //validate.c
 void			ft_verify_map(char **map, t_element *element);
