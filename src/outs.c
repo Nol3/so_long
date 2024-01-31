@@ -22,8 +22,12 @@ void	ft_free_game(t_element *element)
 	mlx_delete_image(element->mlx, element->chest);
 	mlx_delete_image(element->mlx, element->player);
 	mlx_delete_image(element->mlx, element->exit);
+	mlx_delete_image(element->mlx, element->valere1);
+    mlx_delete_image(element->mlx, element->valere2);
+    mlx_delete_image(element->mlx, element->valere3);
 	free(element->full_map);
 	free(element->map_cpy);
+	free(element);
 	mlx_close_window(element->mlx);
 	exit(EXIT_SUCCESS);
 }

@@ -16,7 +16,7 @@ int	ft_create_window(t_element *element)
 {
 	//mlx_image_t	*print_steps;
 
-	element = ft_gen_map(element->mlx, element);
+	ft_gen_map(element->mlx, element);
 	mlx_key_hook(element->mlx, (mlx_keyfunc)ft_movement, element);
 	mlx_close_hook(element->mlx, ft_close_window, element);
 	mlx_loop_hook(element->mlx, ft_valere_idle, element);

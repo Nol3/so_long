@@ -19,7 +19,7 @@ int	ft_valere_idle(t_element *element)
 
 
     timer++;
-    if (timer % 10 == 0) // Cambia la imagen cada 10 ciclos
+    if (timer % 50 == 0) // Cambia la imagen cada 10 ciclos
     {
         animation_state = (animation_state + 1) % 3; // Cicla entre 0, 1 y 2
         if (animation_state == 0)
@@ -61,4 +61,11 @@ void	ft_valere_load(t_element *element)
 	valere_idle = mlx_load_png("./textures/valere_idle/idle_3.png");
 	element->valere3 = mlx_texture_to_image(element->mlx, valere_idle);
 	mlx_delete_texture(valere_idle);
+
+    if (!element->valere1 || !element->valere2 || !element->valere3)
+    {
+        // Manejar el error, imprimir un mensaje y salir
+        perror("Error\nFailed to load textures\n");
+        exit(EXIT_FAILURE);
+    }
 }
