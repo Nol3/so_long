@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:44:42 by alcarden          #+#    #+#             */
-/*   Updated: 2024/02/02 15:51:01 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:26:42 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	ft_to_fill(t_element *element, int player_pos_x, int player_pos_y)
 
 /* flood fill para ubicar la posible E y si es resoluble*/
 
-void	flood_fill(t_element *element, int player_pos_x, int player_pos_y, int *trues)
+void	flood_fill(t_element *element, int player_pos_x, int player_pos_y,
+			int *trues)
 {
 	char	pos;
 

@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:44:55 by alcarden          #+#    #+#             */
-/*   Updated: 2024/02/02 15:51:39 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:25:15 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_valere_idle(t_element *element)
 	static int	timer = 0;
 
 	timer++;
-	if (timer % 15 == 0)
+	if (timer % 12 == 0)
 	{
 		animation_state = (animation_state + 1) % 3;
 		ft_player_position_animation(element, animation_state);
