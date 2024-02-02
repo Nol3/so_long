@@ -23,8 +23,8 @@ OBJS	= ${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX42) $(OBJS)
-	@gcc $(FLAGS) $(OBJS) $(MLX42) $(LIBFT) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
-	# @gcc $(FLAGS) $(OBJS) $(MLX42) $(LIBFT) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L "/Users/alcarden/.brew/opt/glfw/lib/" -o $(NAME)
+	# @gcc $(FLAGS) $(OBJS) $(MLX42) $(LIBFT) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
+	@gcc $(FLAGS) $(OBJS) $(MLX42) $(LIBFT) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L "/Users/alcarden/.brew/opt/glfw/lib/" -o $(NAME)
 
 src/%.o : src/%.c
 	gcc $(FLAGS) -c $< -o $@

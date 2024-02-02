@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/02/02 12:15:00 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:48:28 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char			*ft_read_map(char *file);
 void			ft_load_map(char *file, t_element *element);
 void			ft_get_height_width(t_element *elements, char **map_load);
 t_element		*ft_gen_map(mlx_t *mlx, t_element *element);
-t_element		*ft_gen_player(mlx_t *mlx, t_element *element);
 
 //move.c
 void			ft_movement(mlx_key_data_t paramkey, t_element *element);
@@ -106,7 +105,10 @@ void			ft_open_exit(t_element *element);
 //valere_move.c
 int				ft_valere_idle(t_element *element);
 void			ft_valere_load(t_element *element);
-void			ft_player_position_animation(t_element *element);
+void			ft_player_position_animation(t_element *element,
+					int animation_state);
+void			draw_character(t_element *element,
+					int animation_state, int i, int j);
 
 //validate.c
 void			ft_verify_map(char **map, t_element *element);

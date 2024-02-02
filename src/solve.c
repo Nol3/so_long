@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:44:42 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/30 20:05:57 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:51:01 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,20 @@ void	ft_to_fill(t_element *element, int player_pos_x, int player_pos_y)
 
 void	flood_fill(t_element *element, int player_pos_x, int player_pos_y, int *trues)
 {
-    char	pos;
+	char	pos;
 
-    if (player_pos_x < 0 || player_pos_y < 0 || player_pos_x >= element->height
-        || player_pos_y >= element->width)
-        return;
-
-    pos = element->map_cpy[player_pos_x][player_pos_y];
-    if (pos != '1' && pos != 'X')
-    {
-        if (pos == 'E')
-            *trues = 1;
-        element->map_cpy[player_pos_x][player_pos_y] = 'X';
-        flood_fill(element, player_pos_x + 1, player_pos_y, trues);
-        flood_fill(element, player_pos_x - 1, player_pos_y, trues);
-        flood_fill(element, player_pos_x, player_pos_y + 1, trues);
-        flood_fill(element, player_pos_x, player_pos_y - 1, trues);
-    }
+	if (player_pos_x < 0 || player_pos_y < 0 || player_pos_x >= element->height
+		|| player_pos_y >= element->width)
+		return ;
+	pos = element->map_cpy[player_pos_x][player_pos_y];
+	if (pos != '1' && pos != 'X')
+	{
+		if (pos == 'E')
+			*trues = 1;
+		element->map_cpy[player_pos_x][player_pos_y] = 'X';
+		flood_fill(element, player_pos_x + 1, player_pos_y, trues);
+		flood_fill(element, player_pos_x - 1, player_pos_y, trues);
+		flood_fill(element, player_pos_x, player_pos_y + 1, trues);
+		flood_fill(element, player_pos_x, player_pos_y - 1, trues);
+	}
 }

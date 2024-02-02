@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 06:02:30 by alcarden          #+#    #+#             */
-/*   Updated: 2024/02/02 12:24:04 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:42:32 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_valere(mlx_t *mlx, int height, int width, t_element *element)
 		width * 64, height * 64);
 	mlx_image_to_window(mlx, element->player,
 		width * 64, height * 64);
+	ft_valere_idle(element);
 	element->move_x = height;
 	element->move_y = width;
 }
@@ -45,4 +46,3 @@ void	ft_collectible(mlx_t *mlx, int height, int width, t_element *element)
 	mlx_image_to_window(mlx, element->chest,
 		width * 64, height * 64);
 }
-

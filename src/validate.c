@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:25:21 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/17 17:04:30 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:30:36 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,13 @@ void	ft_verify_map(char **map, t_element *element)
 		{
 			if ((i == 0 || i == element->height - 1)
 				|| (x == 0 || x == element->width - 1))
+			{
 				if (map[i][x] != '1')
-					perror("Map is not closed");
+				{
+					ft_printf("Map is not closed");
+					exit(EXIT_SUCCESS);
+				}
+			}
 		}
 	}
 	ft_check_items(element);
@@ -68,12 +73,14 @@ void	ft_verify_counts(t_element *element)
 	if (element->count_player != 1 || element->count_exit != 1)
 	{
 		free(element);
-		perror("Error with player or exit");
+		ft_printf("No hay jugador o salida\n");
+		exit(EXIT_SUCCESS);
 	}
-	if (element->max_chest < 1)
+	if (element->max_chest <= 0)
 	{
 		free(element);
-		perror("There are no chests!");
+		ft_printf("No hay cofres en el mapa\n");
+		exit(EXIT_SUCCESS);
 	}
 }
 

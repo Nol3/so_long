@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:24:09 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/30 20:43:05 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:40:15 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	ft_movement(mlx_key_data_t paramkey, t_element *element)
 		ft_movement_right(element);
 	if ((paramkey.key == MLX_KEY_ESCAPE || paramkey.key == MLX_KEY_Q)
 		&& paramkey.action == MLX_PRESS)
-		{
-			ft_free_game(element);
-		}
+		ft_free_game(element);
 	ft_put_steps(element);
 }
 
