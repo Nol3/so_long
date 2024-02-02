@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:13:54 by alcarden          #+#    #+#             */
-/*   Updated: 2024/02/02 12:08:21 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:40:38 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ t_element	*ft_gen_map(mlx_t *mlx, t_element *element)
 		{
 			if (element->full_map[i][j] == '1')
 				ft_wall(mlx, i, j, element);
+			else if (element->full_map[i][j] == 'X')
+				ft_enemy(mlx, i, j, element);
 			else if (element->full_map[i][j] == '0')
 				ft_floor(mlx, i, j, element);
 			else if (element->full_map[i][j] == 'C')

@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:24:09 by alcarden          #+#    #+#             */
-/*   Updated: 2024/02/02 15:40:15 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:49:34 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void	ft_movement_up(t_element *element)
 			[element->move_y] == 'C')
 			element->max_chest--;
 		if (element->full_map[element->move_x - 1]
+			[element->move_y] == 'X' || (element->full_map[element->move_x - 1]
 			[element->move_y] == 'E'
-			&& element->max_chest == 0)
+			&& element->max_chest == 0))
 			ft_exit_game(element);
 		else
 		{
@@ -72,8 +73,9 @@ void	ft_movement_down(t_element *element)
 			[element->move_y] == 'C')
 			element->max_chest--;
 		if (element->full_map[element->move_x + 1]
+			[element->move_y] == 'X' || (element->full_map[element->move_x + 1]
 			[element->move_y] == 'E'
-			&& element->max_chest == 0)
+			&& element->max_chest == 0))
 			ft_exit_game(element);
 		else
 		{
@@ -99,8 +101,9 @@ void	ft_movement_left(t_element *element)
 			[element->move_y - 1] == 'C')
 			element->max_chest--;
 		if (element->full_map[element->move_x]
+			[element->move_y - 1] == 'X' || (element->full_map[element->move_x]
 			[element->move_y - 1] == 'E'
-			&& element->max_chest == 0)
+			&& element->max_chest == 0))
 			ft_exit_game(element);
 		else
 		{
@@ -126,8 +129,9 @@ void	ft_movement_right(t_element *element)
 			[element->move_y + 1] == 'C')
 			element->max_chest--;
 		if (element->full_map[element->move_x]
+			[element->move_y + 1] == 'X' || (element->full_map[element->move_x]
 			[element->move_y + 1] == 'E'
-			&& element->max_chest == 0)
+			&& element->max_chest == 0))
 			ft_exit_game(element);
 		else
 		{

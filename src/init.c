@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:18:38 by alcarden          #+#    #+#             */
-/*   Updated: 2024/02/02 12:15:12 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:44:17 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	ft_validate_map(t_element *element)
 		x = 0;
 		while (element->full_map[y][x])
 		{
-			if (ft_strchr("PEC01", element->full_map[y][x]) == NULL)
+			if (ft_strchr("PEC01X", element->full_map[y][x]) == NULL)
 			{
 				ft_free_game(element);
-				perror("only P,E,C,0,1 allowed in map");
+				perror("only P,E,C,0,1,X allowed in map");
 			}
 			x++;
 		}

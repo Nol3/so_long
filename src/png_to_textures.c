@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:57:21 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/31 12:45:23 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:56:19 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_load_textures(t_element *element)
 	texture = mlx_load_png("./textures/valere_idle/idle_0.png");
 	element->player = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
-	texture = mlx_load_png("./textures/enemy.png");
+	texture = mlx_load_png("./textures/traps_copy.png");
 	element->enemy = mlx_texture_to_image(element->mlx, texture);
 	mlx_delete_texture(texture);
 	texture = mlx_load_png("./textures/floor.png");

@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:44:55 by alcarden          #+#    #+#             */
-/*   Updated: 2024/02/02 17:25:15 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:59:53 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,19 @@ void	ft_player_position_animation(t_element *element, int animation_state)
 	}
 }
 
-int	ft_valere_idle(t_element *element)
+void	ft_valere_idle(void *param)
 {
+	t_element	*element;
 	static int	animation_state = 0;
 	static int	timer = 0;
 
+	element = (t_element *)param;
 	timer++;
 	if (timer % 12 == 0)
 	{
 		animation_state = (animation_state + 1) % 3;
 		ft_player_position_animation(element, animation_state);
 	}
-	return (0);
 }
 
 void	ft_valere_load(t_element *element)
