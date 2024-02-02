@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:18:38 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/30 20:46:26 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:15:12 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ft_init_elements(t_element *element)
 	element->valere1 = 0;
 	element->valere2 = 0;
 	element->valere3 = 0;
-	element->valere = 0;
 }
 
 void	ft_validate_map(t_element *element)

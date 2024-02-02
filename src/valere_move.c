@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:44:55 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/31 12:51:29 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:29:09 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,34 @@
 
 int	ft_valere_idle(t_element *element)
 {
+    static int animation_state = 0;
     static int timer = 0;
 
+
     timer++;
-	ft_player_position_animation(element);
-    if (timer % 10 == 0) // Cambia la imagen cada 50 ciclos
+    if (timer % 20 == 0) // Cambia la imagen cada 10 ciclos
     {
-        // Alterna entre las imágenes
-        if (element->valere == element->valere1)
-            element->valere = element->valere2;
-        else if (element->valere == element->valere2)
-            element->valere = element->valere3;
+        animation_state = (animation_state + 1) % 3; // Cicla entre 0, 1 y 2
+        if (animation_state == 0)
+            element->player = element->valere1;
+        else if (animation_state == 1)
+            element->player = element->valere2;
         else
-            element->valere = element->valere1;
-		mlx_image_to_window(element->mlx, element->valere,
-            element->move_y * 64, element->move_x * 64);
+            element->player = element->valere3;
+		int i, j;
+        for (i = 0; element->full_map[i]; i++)
+        {
+            for (j = 0; element->full_map[i][j]; j++)
+            {
+                if (element->full_map[i][j] == 'P')
+                {
+                    // Dibuja la imagen del personaje en la posición correcta
+                    mlx_image_to_window(element->mlx, element->player,
+                        j * 64, i * 64);
+                    return 0;
+                }
+            }
+        }
     }
 	return (0);
 }
@@ -49,31 +62,10 @@ void	ft_valere_load(t_element *element)
 	element->valere3 = mlx_texture_to_image(element->mlx, valere_idle);
 	mlx_delete_texture(valere_idle);
 
-		if (!element->valere1 || !element->valere2 || !element->valere3)
-	{
-		perror("Error\nFailed to load textures\n");
-		exit(EXIT_FAILURE);
-	}
-}
-
-void	ft_player_position_animation(t_element *element)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (element->map_cpy[i])
-	{
-		j = 0;
-		while (element->map_cpy[i][j])
-		{
-			if (element->map_cpy[i][j] == 'P')
-			{
-				element->player_pos_x = j;
-				element->player_pos_y = i;
-			}
-			j++;
-		}
-		i++;
-	}
+    if (!element->valere1 || !element->valere2 || !element->valere3)
+    {
+        // Manejar el error, imprimir un mensaje y salir
+        perror("Error\nFailed to load textures\n");
+        exit(EXIT_FAILURE);
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: alcarden <alcarden@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:33:32 by alcarden          #+#    #+#             */
-/*   Updated: 2024/01/31 12:43:31 by alcarden         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:15:00 by alcarden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_element
 	mlx_image_t		*valere1;
 	mlx_image_t		*valere2;
 	mlx_image_t		*valere3;
-	mlx_image_t		*valere;
 }	t_element;
 
 //añadir mlx_image_t para el Idle de Valere
